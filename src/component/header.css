@@ -1,0 +1,86 @@
+.text {
+  font-family: poppins, cursive;
+  color: #112936;
+  font-weight: 500;
+  font-size: 3em;
+  width: 100%;
+  margin-right: 10%;
+  text-transform: capitalize;
+}
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  height: fit-content;
+}
+
+.login-button,
+.Register-button {
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 15px 20px;
+  margin-left: 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.Register-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+.login-button {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.image {
+  float: right;
+  height: 50%;
+  width: 70%;
+  margin-right: 10%;
+  z-index: 1;
+  position: relative;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    letter-spacing: 6em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+@media (max-width: 768px) {
+  .box {
+    flex-direction: column;
+  }
+  .text,
+  .image {
+    width: 400px;
+    margin-right: 5%;
+    text-align: center;
+    margin-top: 4%;
+    margin-left: 5%;
+  }
+}

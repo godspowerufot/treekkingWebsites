@@ -1,0 +1,235 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+.body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 3rem;
+  font-family: "Inter", sans-serif;
+}
+.grid {
+  grid-gap: 3rem;
+  display: flex;
+  flex-direction: row;
+}
+
+#ul {
+  clip-path: none !important;
+  background-color: white !important;
+  color: 112936;
+}
+.cardSection {
+  margin-top: 10px !important;
+}
+
+.mapcontent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.grid__item {
+  border-radius: 0.4rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.grid__item:hover {
+  transform: translateY(-0.9%);
+  box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.2);
+}
+.card {
+  height: 500px !important;
+  margin-top: 2rem !important;
+  scroll-behavior: smooth;
+  margin-left: 50px;
+}
+
+.card__img {
+  display: block;
+  width: 100%;
+  height: 18rem;
+  object-fit: cover;
+}
+.card__content {
+  padding: 3rem 3rem;
+}
+.card__header {
+  font-size: 3rem;
+  font-weight: 500;
+  color: #0d0d0d;
+  margin-bottom: 1.5rem;
+}
+.card__text {
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.7;
+  color: #3d3d3d;
+  margin-bottom: 2.5rem;
+}
+.card__btn {
+  width: 100%;
+  padding: 1.2rem;
+  margin-top: 5rem;
+  box-shadow: 6px 3rem 5rem 0px rgb(0 0 0 / 53%);
+
+  text-align: center;
+  color: #3363ff;
+  background-color: #e6ecff;
+  border: none;
+  border-radius: 0.4rem;
+  transition: 0.4s;
+  cursor: pointer;
+}
+.card__btn span {
+  margin-left: 1rem;
+  transition: 0.2s;
+}
+.card__btn:hover,
+.card__btn:active {
+  background-color: #dce4ff;
+}
+.card__btn:hover span,
+.card__btn:active span {
+  margin-left: 1.5rem;
+}
+
+/* styling display page */
+img {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+.dispage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profilecard {
+  background: rgb(255 255 255 / 89%);
+  box-shadow: 3px 3px 15px 0px #b9c1c5;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  height: 54px;
+  /* margin-left: 70px; */
+  margin-top: 20px;
+  width: 590px;
+  display: flex;
+  /* align-self: flex-start; */
+  flex-direction: row;
+  border: 1px solid transparent;
+  justify-content: space-between;
+  align-items: center;
+}
+.AboutLocation {
+  background: white;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 15px 0;
+  box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.25);
+  z-index: 5;
+}
+.more {
+  margin-right: 4%;
+}
+.map {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10%;
+}
+.menu-icon {
+  display: none;
+}
+
+.handleToggling {
+  display: none;
+}
+.mapdescription {
+  display: flex;
+  flex-direction: column;
+}
+.mapdescriptions {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  /* align-content: stretch; */
+  flex-direction: row;
+}
+#minitext {
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+.rounded {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#rounde {
+  width: 100px;
+  height: 100px;
+  padding: 10px 20px;
+  display: flex;
+  border-radius: 50%;
+  box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.25);
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+#roundes {
+  display: flex;
+  border-radius: 50%;
+  box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.25);
+  align-content: center;
+  justify-content: center;
+  /* align-items: center;*/
+}
+#arrowTop {
+  display: flex;
+  border-radius: 50%;
+  box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.25);
+  align-content: center;
+  justify-content: center;
+  z-index: 5;
+  width: 42px;
+  position: fixed;
+}
+/* align-items: center;*/
+
+@media (max-width: 60em) {
+  .grid {
+    grid-gap: 3rem;
+    margin-top: 2em;
+  }
+  .card__btn {
+    margin-top: 2rem;
+  }
+  .cardSection {
+    margin-top: 22px !important;
+  }
+  .profilecard {
+    width: 485px;
+  }
+
+  .AboutLocation {
+    width: 100%;
+    max-width: 100%;
+       height: 183px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+}
