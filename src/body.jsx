@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 import AOS from "aos";
 import Loader from "./Loader.jsx";
 
-import New from "../src/component/pageloade";
+import New from "./component/VIEWS/pageloade";
 
 function Bodypage() {
   useEffect(() => {

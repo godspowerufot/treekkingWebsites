@@ -1,0 +1,47 @@
+.about-details-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  text-align: center;
+  margin: 2rem;
+}
+
+.card-img img {
+  width: 100%;
+  max-width: 100%;
+  box-shadow: 0px 0rem 3rem #112936;
+  border-radius: 20px;
+
+  max-width: 500px;
+  height: auto;
+}
+
+.filter-users {
+  margin-top: 1.5rem;
+}
+
+.user-item {
+  border-style: groove;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  box-shadow: 2px 1rem 7rem 0px rgb(0 0 0 / 0%);
+  margin: 0.5rem 0;
+  margin-top: 34px;
+  border-color: rgb(17, 41, 54);
+  border-radius: 9px;
+  justify-content: space-between;
+}
+
+.user-item span {
+  margin-left: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .card-img img {
+    max-width: 100%;
+  }
+}

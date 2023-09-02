@@ -1,26 +1,20 @@
 import React from "react";
-import "./header.css";
-import image from "./images/fun-illustration-3d-cartoon-backpacker (1).jpg";
+import "./styling/header.css";
 import Navbar from "./Navbar";
-import Section from "./section";
+import Section from "./section.jsx";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
 function New() {
   return (
     <>
-      <div>
+      <div  className="landingPage">
         <Navbar />
+
         <div className="box">
-          <div
-            className="images"
-            data-aos="fade-right"
-            data-aos-easing="ease-in-sine">
-            <img src={image} alt="walking illustration" className="image" />
-          </div>
-          <div className="text" data-aos="fade-left">
+          <div className="text" data-aos="zoom-in">
             Find a partner and Trek For Fun , It Simple,Safe and healthy!.
             <br />
-            <div className="btn">
+            <div className="btn" style={{ marginLeft: "   -18px" }}>
               <Link to="/signIn">
                 {" "}
                 <button className="login-button">

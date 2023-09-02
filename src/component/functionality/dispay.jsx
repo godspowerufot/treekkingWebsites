@@ -1,36 +1,38 @@
 import React, { useState } from "react";
 import "./card.css";
-import { useParams } from "react-router-dom";
-import { AddCircleOutlineRounded } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 import { UserAuth } from "../contextapi";
 import { Delete } from "@mui/icons-material";
 import { Add } from "@mui/icons-material";
-import { ArrowLeft } from "@mui/icons-material";
-import { ArrowUp } from "@mui/icons-material";
+import { ChevronLeft } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import MiniDrawer from "./drawer";
 function DisplayPage() {
-  const [styless, setShowNavbar] = useState(true);
-  const handleShowNavbar = () => {
-    setShowNavbar((p) => !styless);
-  };
-  const { selectImage, setSelectImage } = UserAuth();
-  console.log(setSelectImage);
+  const { selectImage } = UserAuth();
 
-  const { location } = useParams();
   return (
     <>
       <div>
-        <div id="arrowTop">
-          <Link to="/function">
-            <ArrowLeft />
-          </Link>
+        <MiniDrawer />
+
+        <div className="iframe-container">
+          {" "}
+          <div id="arrowTop">
+            <Link to="/function">
+              <ChevronLeft />
+            </Link>
+          </div>
+          {selectImage ? (
+            <iframe
+              src={selectImage}
+              style={{ border: "0" }}
+              title="name"
+              
+              ></iframe>
+          ) : (
+            <div> there is no mage</div>
+          )}
         </div>
-        {selectImage ? (
-          <img src={selectImage} alt={location} />
-        ) : (
-          <div> there is no mage</div>
-        )}
       </div>
       <div className="AboutLocation">
         <div className="mapdescriptions">

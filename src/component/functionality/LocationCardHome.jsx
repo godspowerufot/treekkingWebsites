@@ -6,15 +6,26 @@ import { UserAuth } from "../contextapi";
 import { AccountCircle } from "@mui/icons-material";
 import locations from "./fetch";
 import { Link } from "react-router-dom";
+import { db } from "../firebase";
+import {  doc, setDoc } from "firebase/firestore";
 
 function SelectLocation() {
-  const { setSelectImage } = UserAuth();
+  const { setSelectImage, user } = UserAuth();
+  var selectedLocation;
 
   const handleSubmit = async (image) => {
     try {
       setSelectImage(image);
+
+      // Store selected image in Firestore under the user's document
+      if (user) {
+        const userDocRef = doc(db, "users", user?.email); // Assuming user.uid is the unique identifier for the user
+
+        // Update the document with the selected image
+        await setDoc(userDocRef, { selectedImage: image }, { merge: true });
+      }
     } catch (error) {
-      console.log(error);
+      console.error("Error storing selected image in Firestore:", error);
     }
   };
 
@@ -24,11 +35,14 @@ function SelectLocation() {
         <div className="cardSection">
           {locations.map((text, index) => (
             <div className="card" key={index}>
-              <img
-                className="card__img"
-                src={text.text}
-                alt="Snowy Mountains"
-              />
+              <iframe
+                src={text.embedLink}
+                width="400px"
+                height="200px"
+                style={{ border: "0" }}
+                title="name"
+                loading="lazy"></iframe>
+
               <div className="card__content">
                 <h1 className="card__header">{text.header}</h1>
                 <p className="card__text">
@@ -46,7 +60,7 @@ function SelectLocation() {
                         width: "40px",
                         height: "20px",
                       }}
-                      onClick={() => handleSubmit(text?.text)}
+                      onClick={() => handleSubmit(text?.embedLink)}
                     />
                   </Link>
 

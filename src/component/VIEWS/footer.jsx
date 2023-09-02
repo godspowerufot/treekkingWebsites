@@ -1,5 +1,5 @@
 import React from "react";
-import "./footer.css";
+import "./styling/footer.css";
 import { Facebook } from "@mui/icons-material";
 import { Phone } from "@mui/icons-material";
 import { WhatsApp } from "@mui/icons-material";

@@ -45,11 +45,9 @@
 
 header {
   position: fixed;
-  padding-block: 15px;
+  /* padding-block: 15px; */
   width: 100%;
-  height: 65px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
+
   transition: 0.25s var(--cubic-out);
   z-index: 4;
 }
@@ -57,6 +55,7 @@ header .navbaecontainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+ 
 }
 nav {
   background-color: #112936;
@@ -71,12 +70,12 @@ nav {
 ul {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 li {
   list-style: none;
-  margin-top: 3.5vh;
+  padding-inline: 100px;
 }
 
 li a {
@@ -125,5 +124,6 @@ li a {
     clip-path: circle(1000px at 95% 5%);
     -webkit-clip-path: circle(1000px at 95% 5%);
     pointer-events: all;
+    justify-content: space-evenly;
   }
 }

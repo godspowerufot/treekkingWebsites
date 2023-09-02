@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { LocationOnTwoTone } from "@mui/icons-material";
-import image from "./6349633.jpg";
 
 function Card() {
   const itemList = [

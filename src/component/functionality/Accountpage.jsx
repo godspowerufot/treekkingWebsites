@@ -2,24 +2,41 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
 import MiniDrawer from "./drawer";
-
+import { UserAuth } from "../contextapi";
+import { collection, addDoc } from "firebase/firestore";
 import "./Account.css";
+import { useNavigate } from "react-router-dom";
 const AccountPage = () => {
+  const { user, logOut } = UserAuth();
+
   // storing the created account to firestore
-  const createUser = async (userData) => {
+  let navigate = useNavigate();
+
+  const createUser = async (event) => {
+    event.preventDefault();
     try {
-      await db.collection("users").add(userData);
-      console.log("User data added successfully!");
+      await addDoc(collection(db, "users"), {
+        fullName: formData.fullName,
+        dept: formData.dept,
+
+        Preferlocation: formData.Preferlocationlocation,
+        regNo: formData.regNo,
+        
+
+        interest: formData.interests,
+      });
+      navigate("/Yourprofile");
+      console.log("User registered successfully!");
     } catch (error) {
-      console.error("Error adding user data:", error);
+      console.error("Error registering user:", error);
     }
   };
-
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    fullName: "",
+    dept: "",
+
     regNo: "",
-    location: "",
+    Preferlocation: "",
     interests: "",
   });
 
@@ -28,50 +45,22 @@ const AccountPage = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Process form data, e.g., send to server or context
-
-    // Create an object with user data
-    const userData = {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      location: formData.location,
-      regNo: formData.regNo,
-
-      interest: formData.interests,
-
-      // ... other user data
-    };
-
-    // Call the function to add user data to Firestore
-    createUser(userData);
-    alert("sucessful");
-  };
-
   return (
     <div className="em">
       <MiniDrawer />
       <div className="account-page">
         <h2>Create an Account</h2>
 
-        <form onSubmit={handleSubmit} className="account-form">
+        <form onSubmit={createUser} className="account-form">
           <input
             type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={formData.firstName}
+            name="fullName"
+            placeholder="fullName"
+            value={formData.fullName}
             onChange={handleChange}
             required
           />
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-          />
+
           <input
             type="text"
             name="regNo"
@@ -81,17 +70,17 @@ const AccountPage = () => {
             required
           />
           <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
+            type="text"
+            name="dept"
+            placeholder="dept"
+            value={formData.dept}
             onChange={handleChange}
           />
           <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
+            type="text"
+            name="dept"
+            placeholder="Enter your department"
+            value={formData.dept}
             onChange={handleChange}
             required
           />
@@ -111,9 +100,7 @@ const AccountPage = () => {
             onChange={handleChange}
             formNoValidate
           />
-          <button type="submit" onClick={handleSubmit}>
-            Create Account
-          </button>
+          <button type="submit">Create Account</button>
 
           <p>
             Already have an account? <Link to="/login">Login</Link>

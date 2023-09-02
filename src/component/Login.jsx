@@ -46,7 +46,7 @@ function LoginPage() {
               <WhatsApp />
             </a>
           </div>
-          <span>or use your account</span>
+          <span></span>
           <input
             type="text"
             name="email"
@@ -62,7 +62,6 @@ function LoginPage() {
             value={note.password}
             onChange={UpdateNote}
           />
-          <a href="www.404.com">Forgot your password?</a>
 
           <button onClick={handleSubmit}>Log In</button>
         </form>

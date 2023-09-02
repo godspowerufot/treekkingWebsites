@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import "./navbar.css";
+import "./styling/navbar.css";
 import { HashLink as Link } from "react-router-hash-link";
 
 import MenuIcon from "@mui/icons-material/Menu";
@@ -37,10 +37,10 @@ function Navbar() {
       <div className="navbaecontainer">
         <nav className="navbar">
           {/* set navelement to false on large(horizontally ) */}
+          TKK
           <div className="menu-icon" onClick={handleShowNavbar}>
             {showNavbar ? <CloseIcon /> : <MenuIcon />}
           </div>
-
           <ul className={showNavbar ? "open" : ""}>
             {itemList.map((text, index) => (
               <li key={"text" + index} className={text.class}>

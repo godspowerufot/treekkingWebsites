@@ -9,6 +9,7 @@ import Autcontextprovider from "./component/contextapi";
 import DisplayPage from "./component/functionality/dispay";
 import AccountPage from "./component/functionality/Accountpage";
 import AboutDetailsPage from "./component/functionality/DetailsPage";
+import ProfileCard from "./component/functionality/profile";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/displaypage/:location" element={<DisplayPage />} />
             <Route path="/Account" element={<AccountPage />} />
             <Route path="/AboutDetailsPage" element={<AboutDetailsPage />} />
+            <Route path="/Yourprofile" element={<ProfileCard />} />
           </Routes>
         </Router>
       </Autcontextprovider>

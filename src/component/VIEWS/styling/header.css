@@ -1,19 +1,31 @@
 .text {
-  font-family: poppins, cursive;
-  color: #112936;
-  font-weight: 500;
-  font-size: 3em;
-  width: 100%;
-  margin-right: 10%;
+  font-family: poppins, sans-serif;
+  color: white;
+  padding-inline: 15px;
+  font-size: 36px;
+  font-weight: 800;
+  width: 700px;
   text-transform: capitalize;
 }
+.landinPage{
+ overflow-x:hidden;
+}
 .box {
+  background-image: url("../images/silhouette-men-hiking-mountain-peak-sunset-generative-ai.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: hsla(0, 0%, 0%, 0.7);
+  background-blend-mode: overlay;
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 100%;
+  min-width:100vw;
 
-  height: fit-content;
+  align-items: center;
+  place-items: center;
+  min-height: 100vh;
+  text-align: center;
+  padding-top: 125px;
 }
 
 .login-button,
@@ -23,7 +35,6 @@
   font-size: 16px;
   font-weight: bold;
   padding: 15px 20px;
-  margin-left: 20px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -35,9 +46,16 @@
   transform: scale(1.05);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
+.login-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
 .login-button {
   transform: scale(1.05);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+.btn a {
+  margin-left: 25px;
 }
 
 .image {
@@ -73,14 +91,14 @@
 }
 @media (max-width: 768px) {
   .box {
-    flex-direction: column;
+ 
+    z-index: -1;
+    width: 100%;
   }
   .text,
   .image {
-    width: 400px;
-    margin-right: 5%;
+    width: 300px;
     text-align: center;
     margin-top: 4%;
-    margin-left: 5%;
   }
 }

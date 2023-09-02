@@ -1,5 +1,5 @@
 import React from "react";
-import "./about.css";
+import "./styling/about.css";
 const AboutPage = () => {
   return (
     <div className="about-page">
