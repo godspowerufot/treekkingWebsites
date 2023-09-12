@@ -59,7 +59,7 @@ header .navbaecontainer {
 }
 nav {
   background-color: #112936;
-  height: 9vh;
+  height: 6vh;
   font-family: cursive;
   width: 100%;
   color: white;
@@ -70,12 +70,14 @@ nav {
 ul {
   display: flex;
   flex-direction: row;
+ margin-top: 10px;
   justify-content: center;
+
 }
 
 li {
   list-style: none;
-  padding-inline: 100px;
+  padding-inline: 59px;
 }
 
 li a {
@@ -106,7 +108,7 @@ li a {
 
   nav {
     background-color: #112936;
-    height: 64px;
+    height: 34px;
     width: 100%;
   }
 

@@ -1,0 +1,42 @@
+/* Add your sidebar styles here */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -23px;
+  width: 323px;
+  font-size: 5px;
+  height: 100%;
+  background-color: white;
+  transition: right 0.9s ease-in;
+  z-index: 1;
+}
+/* Regular styles for larger screens */
+.iframe-container {
+  transition: margin-right 0.3s ease-in-out;
+}
+
+.AboutLocation {
+  transition: margin-right 0.3s ease-in-out;
+}
+
+/* Adjust margins when the sidebar is open */
+.sidebar-open .iframe-container {
+  margin-right: 300px; /* Width of the sidebar */
+}
+
+.sidebar-open .AboutLocation {
+  margin-right: 300px; /* Width of the sidebar */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .iframe-container,
+  .AboutLocation {
+    transition: none; /* Disable transitions on smaller screens */
+    margin-right: 0; /* Reset margins for smaller screens */
+  }
+
+  .sidebar {
+    width: 100%; /* Make the sidebar full width on smaller screens */
+  }
+}

@@ -11,7 +11,7 @@ import {  doc, setDoc } from "firebase/firestore";
 
 function SelectLocation() {
   const { setSelectImage, user } = UserAuth();
-  var selectedLocation;
+  
 
   const handleSubmit = async (image) => {
     try {
@@ -24,7 +24,7 @@ function SelectLocation() {
         // Update the document with the selected image
         await setDoc(userDocRef, { selectedImage: image }, { merge: true });
       }
-    } catch (error) {
+    } catch (error) {   
       console.error("Error storing selected image in Firestore:", error);
     }
   };
@@ -37,7 +37,7 @@ function SelectLocation() {
             <div className="card" key={index}>
               <iframe
                 src={text.embedLink}
-                width="400px"
+                width="550px"
                 height="200px"
                 style={{ border: "0" }}
                 title="name"

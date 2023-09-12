@@ -1,20 +1,52 @@
 import React, { useState } from "react";
 import "./card.css";
 import { Avatar } from "@mui/material";
-import { UserAuth } from "../contextapi";
 import { Delete } from "@mui/icons-material";
 import { Add } from "@mui/icons-material";
 import { ChevronLeft } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import MiniDrawer from "./drawer";
-function DisplayPage() {
-  const { selectImage } = UserAuth();
+import Sidebar from "./Sidebar.jsx"; // Import the Sidebar component
+import NotificationsComponent from "./ReceiverrNotification";
+import NewNotification from "./newNotification";
+import { UserAuth } from "../contextapi";
 
+function DisplayPage() {
+  const { selectImage,user } = UserAuth();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Function to toggle the sidebar
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+  const [newNotification, setNewNotification] = useState(null);
+
+  // Function to handle new notifications
+  const handleNewNotification = (notification) => {
+    setNewNotification(notification);
+  };
+
+  // Function to close the new notification
+  const closeNotification = () => {
+    setNewNotification(null);
+  };
+  
   return (
     <>
       <div>
         <MiniDrawer />
-
+        {/* Show the sidebar only on mobile view */}
+        {newNotification && (
+        <NewNotification
+          notification={newNotification}
+          onClose={closeNotification}
+        />
+      )}
+      {/* Render the NotificationsComponent */}
+      <NotificationsComponent
+        user={user} // Pass the user as a prop
+        onNewNotification={handleNewNotification} // Pass the function to handle new notifications
+      />
         <div className="iframe-container">
           {" "}
           <div id="arrowTop">
@@ -27,8 +59,7 @@ function DisplayPage() {
               src={selectImage}
               style={{ border: "0" }}
               title="name"
-              
-              ></iframe>
+            ></iframe>
           ) : (
             <div> there is no mage</div>
           )}
@@ -56,15 +87,16 @@ function DisplayPage() {
             </span>
           </div>
           <div className="mapdescription">
-            <span id="rounde">
+            <span id="rounde" >
               <Link to="/AboutDetailsPage">
                 <Avatar width="36px" height="37px" />
               </Link>
             </span>
           </div>
+          {/* Show the toggle button for sidebar only on mobile view */}
           <div className="mapdescription">
             {" "}
-            <span id="roundes">
+            <span id="roundes" >
               <Add width="2em" height="2em" />
             </span>
           </div>

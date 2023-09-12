@@ -25,7 +25,8 @@ const Footer = () => {
         <div className="social-icons">
           <a
             href="https://web.facebook.com/profile.php?id=100086359764945&_rdc=1&_rdr"
-            className="icons">
+            className="icons"
+          >
             <Facebook />
           </a>
           <a href="tel:+2347089293254" className="icons">
@@ -37,18 +38,14 @@ const Footer = () => {
           <a href="http://t.me/Zack3254" className="icons">
             <Telegram />
           </a>
-          <a
-            href="
-https://mail.google.com/ "
-            className="icons">
+          <a href="https://mail.google.com/" className="icons">
             <Mail />
           </a>
-          <p>&copy; 2023 Trekkers. All rights reserved.</p>
         </div>
+        <p>&copy; 2023 Trekkers. All rights reserved.</p>
       </div>
     </footer>
   );
 };
 
 export default Footer;
-//

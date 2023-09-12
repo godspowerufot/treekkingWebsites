@@ -46,6 +46,7 @@ html {
   margin-top: 2rem !important;
   scroll-behavior: smooth;
   margin-left: 50px;
+  width:fit-content !important;
 }
 
 .card__img {
@@ -55,7 +56,7 @@ html {
   object-fit: cover;
 }
 .card__content {
-  padding: 3rem 3rem;
+  padding: 0rem 3rem;
 }
 .card__header {
   font-size: 3rem;

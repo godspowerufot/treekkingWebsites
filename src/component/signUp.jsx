@@ -17,7 +17,7 @@ function SignUp() {
       await signUp(note.email, note.password);
       navigate("/function");
     } catch (error) {
-      console.log("error");
+      console.log(error);
     }
   };
   const googlesubmit = async (event) => {

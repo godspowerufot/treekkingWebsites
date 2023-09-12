@@ -21,10 +21,7 @@ function Section() {
       text: "Services",
       link: "#services",
     },
-    {
-      text: "another",
-      link: "#services",
-    },
+  
   ];
   return (
     <>
@@ -37,7 +34,7 @@ function Section() {
               nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia
               tenetur, aptent.
             </p>
-            <div class="popular-list">
+            <div class="popular-list" data-aos="zoom-in">
               {itemList.map((text, index) => (
                 <div className="popular-lists">
                   <div class="popular-card">
@@ -71,11 +68,12 @@ function Section() {
             </p>
           </div>
         </div>
-        <div className="bodyHeading" data-aos="zoom-in">
+        <div className="bodyHeading" data-aos="fade-up">
           <h2>Mark your next step</h2>
 
           <div className="cardSection" id="catalogues">
-            <Card />
+      
+            <Card />            
           </div>
           <div class="gallery" id="gallery">
             <div class="containera">
