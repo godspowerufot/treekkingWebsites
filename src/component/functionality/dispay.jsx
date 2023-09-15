@@ -2,58 +2,58 @@ import React, { useState } from "react";
 import "./card.css";
 import { Avatar } from "@mui/material";
 import { Delete } from "@mui/icons-material";
-import { Add } from "@mui/icons-material";
-import { ChevronLeft } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import MiniDrawer from "./drawer";
-import Sidebar from "./Sidebar.jsx"; // Import the Sidebar component
+import { Login } from "@mui/icons-material";
+import { useNavigate } from "react-router";
+
 import NotificationsComponent from "./ReceiverrNotification";
 import NewNotification from "./newNotification";
 import { UserAuth } from "../contextapi";
-
+import CloseIcon from "@mui/icons-material/Close";
+import MenuIcon from "@mui/icons-material/Menu";
+import HeaderComponent from "./HeaderComponent.jsx"
 function DisplayPage() {
-  const { selectImage,user } = UserAuth();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { selectImage } = UserAuth();
+  const [isNotification, setIsNotification] = useState(false);
 
   // Function to toggle the sidebar
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+
+  const [newNotification] = useState(null);
+  const toggleNotification = () => {
+    setIsNotification((p) => !isNotification);
   };
-  const [newNotification, setNewNotification] = useState(null);
 
   // Function to handle new notifications
-  const handleNewNotification = (notification) => {
-    setNewNotification(notification);
+     //check if user log in
+  const { user, logOut } = UserAuth();
+  const navigate = useNavigate();
+  console.log(user);
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/");
+    } catch (error) {
+      console.log("error");
+    }
   };
-
-  // Function to close the new notification
-  const closeNotification = () => {
-    setNewNotification(null);
-  };
-  
   return (
     <>
       <div>
-        <MiniDrawer />
+      <HeaderComponent/>
+        <div className={isNotification? "" : "open"}>
         {/* Show the sidebar only on mobile view */}
         {newNotification && (
         <NewNotification
           notification={newNotification}
-          onClose={closeNotification}
         />
       )}
       {/* Render the NotificationsComponent */}
       <NotificationsComponent
-        user={user} // Pass the user as a prop
-        onNewNotification={handleNewNotification} // Pass the function to handle new notifications
-      />
+        // Pass the function to handle new notifications
+      /></div>
         <div className="iframe-container">
           {" "}
-          <div id="arrowTop">
-            <Link to="/function">
-              <ChevronLeft />
-            </Link>
-          </div>
+        
           {selectImage ? (
             <iframe
               src={selectImage}
@@ -66,39 +66,28 @@ function DisplayPage() {
         </div>
       </div>
       <div className="AboutLocation">
-        <div className="mapdescriptions">
-          <div className="mapdescription">
-            Distance
-            <span id="minitext"> 2.8km </span>
-          </div>
-          <div className="mapdescription">
-            {" "}
-            Time <span id="minitext"> 2.8km </span>
-          </div>
-          <div className="mapdescription">
-            {" "}
-            elevation <span id="minitext"> 2.8km </span>
-          </div>
-        </div>
+      
         <div className="rounded">
-          <div className="mapdescription">
-            <span id="roundes">
-              <Delete width="2em" height="2em" />
-            </span>
+          <div className="mapdescription"  onClick={handleLogout}>
+          
+            <Login width="2em" height="2em" />
+           
           </div>
           <div className="mapdescription">
-            <span id="rounde" >
+           
               <Link to="/AboutDetailsPage">
                 <Avatar width="36px" height="37px" />
               </Link>
-            </span>
+            
           </div>
           {/* Show the toggle button for sidebar only on mobile view */}
-          <div className="mapdescription">
+          <div className="mapdescription" onClick={toggleNotification} >
             {" "}
-            <span id="roundes" >
-              <Add width="2em" height="2em" />
-            </span>
+    
+            
+            {isNotification? <CloseIcon /> : <MenuIcon />}
+        
+        
           </div>
         </div>
       </div>

@@ -7,35 +7,56 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import "./NotificationsComponent.css"; // Import your CSS file for styling
+import { UserAuth } from "../contextapi";
 
-function NotificationsComponent({ user }) {
+
+function NotificationsComponent() {
+  const { user } = UserAuth(); // Assuming you're using the user's UID for authentication
+
   const [notifications, setNotifications] = useState([]);
+  const [loading, setLoading] = useState(false); // To track loading state
+  const [error, setError] = useState(null); // To track error state
 
   useEffect(() => {
     // Set up a query to listen for notifications specific to the user
-    if (user?.email) {
-      const notificationsRef = collection(db, "notifications"); // Replace with your collection name
+    if (user.uid) {
+      const notificationsRef = collection(db, "notifications");
       const q = query(
         notificationsRef,
-        where("Document Id", "==", user.uid) // Assuming recipient's UID is stored in the notification document
+        where("sender", "=", user.uid)
       );
+
+      // Create a set to track unique senders
+      const uniqueSenders = new Set();
 
       // Subscribe to real-time updates
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         const newNotifications = [];
+
         querySnapshot.forEach((doc) => {
-          newNotifications.push(doc.data());
+          const data = doc.data();
+          const sender = data.sender;
+
+          // Check if the sender is unique
+          if (!uniqueSenders.has(sender)) {
+            uniqueSenders.add(sender);
+            newNotifications.push(data);
+          }
         });
+
+        setLoading(true);
+        setError(null);
         setNotifications(newNotifications);
       });
 
       return () => {
+        setLoading(false);
         // Unsubscribe from the listener when the component unmounts
         unsubscribe();
       };
     }
   }, [user]);
-
+console.error(error);
   return (
     <div className="notification-card">
       <h2>Trekking Invitations</h2>
@@ -43,18 +64,19 @@ function NotificationsComponent({ user }) {
         <p>No trekking invitations.</p>
       ) : (
         <ul>
-          {notifications.map((notification, index) => (
-            <li key={index}>
-              <div className="notification-content">
-                <span className="notification-sender">
-                  User {notification.sender}
-                </span>
-                <span className="notification-location">
-                  wants to trek with you at {notification.location}.
-                </span>
-              </div>
-            </li>
-          ))}
+          {!loading ? (
+            <div className="spinner"></div>
+          ) : (
+            notifications.map((notification, index) => (
+              <li key={index}>
+                <div className="notification-content">
+                  <span className="notification-sender">
+                    User {notification.sender}
+                  </span>
+                </div>
+              </li>
+            ))
+          )}
         </ul>
       )}
     </div>

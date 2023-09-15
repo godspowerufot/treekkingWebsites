@@ -15,6 +15,9 @@ html {
   display: flex;
   flex-direction: row;
 }
+.open{
+display: block;
+}
 
 #ul {
   clip-path: none !important;
@@ -46,7 +49,7 @@ html {
   margin-top: 2rem !important;
   scroll-behavior: smooth;
   margin-left: 50px;
-  width:fit-content !important;
+  width:550px !important;
 }
 
 .card__img {
@@ -219,7 +222,12 @@ html {
     height: 100vh;
    
   }
-
+  .open{
+    display: none;
+    }
+.openModal{
+  display: block;
+  }
   .AboutLocation {
     width: 100%;
     max-width: 100%;

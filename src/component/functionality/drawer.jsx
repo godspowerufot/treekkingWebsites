@@ -222,6 +222,7 @@ function MiniDrawer() {
                       fontWeight: "bold",
                       color: "black",
                     }}
+                    
                   />
                 </Link>
               </ListItemButton>

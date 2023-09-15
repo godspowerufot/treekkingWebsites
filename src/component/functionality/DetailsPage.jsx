@@ -3,7 +3,7 @@ import "./CardDetaills.css";
 import { Avatar } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import { UserAuth } from "../contextapi";
-import MiniDrawer from "./drawer";
+import HeaderComponent from "./HeaderComponent.jsx"
 import { db } from "../firebase";
 import {
   collection,
@@ -39,13 +39,13 @@ function AboutDetailsPage() {
 
 
   // Function to send a trekking invitation
-  const sendTrekkingInvitation = async (senderUserId, trekLocation) => {
+  const sendTrekkingInvitation = async (senderUserId, usersWithSameLocation) => {
     try {
       const notificationsRef = collection(db, "notifications"); // Replace "notifications" with your collection name
       // Create a new notification document
       await addDoc(notificationsRef, {
         sender: senderUserId,
-        location: trekLocation,
+        location:usersWithSameLocation,
         timestamp: new Date(),
       });
       console.log("Trekking invitation sent successfully.");
@@ -58,7 +58,7 @@ function AboutDetailsPage() {
   const handleAddFriends= () => {
     if (user) {
       // Assuming user.uid is the unique identifier for the user
-      sendTrekkingInvitation(user?.email, selectImage);
+      sendTrekkingInvitation(user?.email,usersWithSameLocation);
     } else {
       // Handle the case where the user is not logged in
       alert("Kindly login")
@@ -89,7 +89,7 @@ function AboutDetailsPage() {
 
   return (
     <div className="about-details-page">
-      <MiniDrawer />
+      <HeaderComponent />
       <div className="heading">
         <h2>Your Trek</h2>
         <div className="card-img">

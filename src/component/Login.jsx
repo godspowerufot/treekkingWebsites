@@ -9,14 +9,25 @@ import { UserAuth } from "./contextapi";
 function LoginPage() {
   let navigate = useNavigate();
   const { logIn } = UserAuth();
+  const [loading, setLoading] = useState(false); // To track loading state
+  const [error, setError] = useState(null); // To track error state
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // Set loading to true to show the spinner
+    setLoading(true);
+    setError(null);
+
     try {
       await logIn(note.email, note.password);
+      setLoading(false)
       navigate("/function");
     } catch (error) {
-      alert("your not a signed user please  sign up");
-    }
+// Set loading to false to hide the spinner
+setLoading(false);
+
+// Set the error state to display an alert
+setError(" failed. Please try again.")    }
   };
   const [note, setnote] = useState({
     email: "",
@@ -63,8 +74,16 @@ function LoginPage() {
             onChange={UpdateNote}
           />
 
-          <button onClick={handleSubmit}>Log In</button>
-        </form>
+  {/* Display a spinner while loading */}
+  {loading ? (
+            <div className="spinner"></div>
+          ) : (
+            <button onClick={handleSubmit}>SIGNIN</button>
+          )}
+
+          {/* Display an error alert if there's an error */}
+          {error && <div className="error-alert">{error}</div>}
+                </form>
       </div>
     </div>
   );
