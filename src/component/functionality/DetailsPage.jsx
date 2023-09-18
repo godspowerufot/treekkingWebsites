@@ -5,15 +5,16 @@ import { Add } from "@mui/icons-material";
 import { UserAuth } from "../contextapi";
 import HeaderComponent from "./HeaderComponent.jsx"
 import { db } from "../firebase";
+import WhatsAppModal from "../functionality/whatsappModal"
 import {
   collection,
   query,
   where,
   getDocs,
-addDoc,updateDoc,doc
+addDoc
  
 } from "firebase/firestore"; // Import FieldValue
-import WhatsAppModal from "../functionality/whatsappModal"
+
 function AboutDetailsPage() {
   const { selectImage, user } = UserAuth();
   const [usersWithSameLocation, setUsersWithSameLocation] = useState([]);
@@ -39,7 +40,26 @@ function AboutDetailsPage() {
   };
 
 
+  
 
+  // ...
+
+  // Function to send a trekking invitation
+  const sendTrekkingInvitation = async (senderUserId, recipientEmail) => {
+    try {
+      const notificationsRef = collection(db, "notifications");
+      // Create a new notification document
+      await addDoc(notificationsRef, {
+        sender: senderUserId,
+        recipient: recipientEmail, // Use the selected user's email as the recipient
+        timestamp: new Date(),
+      });
+      console.log("Trekking invitation sent successfully.");
+    } catch (error) {
+      console.error("Error sending trekking invitation:", error);
+    }
+  };
+  
   const handleWhatsAppSave = async (whatsappNumber) => {
     // Save the WhatsApp number to the database
     // You can implement this part
@@ -69,23 +89,6 @@ function AboutDetailsPage() {
   }, [user]);
   
 
-  // ...
-
-  // Function to send a trekking invitation
-  const sendTrekkingInvitation = async (senderUserId, recipientEmail) => {
-    try {
-      const notificationsRef = collection(db, "notifications");
-      // Create a new notification document
-      await addDoc(notificationsRef, {
-        sender: senderUserId,
-        recipient: recipientEmail, // Use the selected user's email as the recipient
-        timestamp: new Date(),
-      });
-      console.log("Trekking invitation sent successfully.");
-    } catch (error) {
-      console.error("Error sending trekking invitation:", error);
-    }
-  };
 
   // In your component, call the function when the "Add" button is clicked
   const handleAddFriends = (selectedUserEmail) => {
@@ -99,15 +102,17 @@ function AboutDetailsPage() {
 
 
   useEffect(() => {
+    console.log("selectImage:", selectImage);
+    console.log("user:", user);
+  
     if (selectImage) {
       setLoading(true);
       setError(null);
-
-      // Store the user's email for the selected location
-
+  
       // Fetch users with the same selected location
       getUsersWithSameLocation(selectImage)
         .then((userIds) => {
+          console.log("Users with same location:", userIds);
           setUsersWithSameLocation(userIds);
         })
         .catch((error) => {
@@ -117,7 +122,8 @@ function AboutDetailsPage() {
           setLoading(false);
         });
     }
-  }, [selectImage, user]); // Include user in the dependency array
+  }, [selectImage, user]);
+  // Include user in the dependency array
 
   return (
     <div className="about-details-page">
@@ -152,6 +158,7 @@ function AboutDetailsPage() {
         </div>
       </div>
       {showModal && <WhatsAppModal onSave={handleWhatsAppSave} />}
+
     </div>
   );
 }

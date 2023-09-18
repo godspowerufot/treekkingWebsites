@@ -5,7 +5,7 @@ function WhatsAppModal({ onSave }) {
   const [whatsappNumber, setWhatsAppNumber] = useState('');
 
   const handleSave = () => {
-    onSave(whatsappNumber);
+    onSave(parseInt(whatsappNumber));
   };
 
   return (

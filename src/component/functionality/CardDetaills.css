@@ -26,16 +26,15 @@
 #user-item {
   display: flex;
   align-items: center;
- 
   justify-content: space-evenly;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   padding: -10px;
-  position: fixed;
+  /* position: fixed; */
   height: 71px;
-  z-index: 2;
+  /* z-index: 2; */
   width: 491px;
   margin-top: 31px;
 }

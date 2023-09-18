@@ -51,6 +51,11 @@ function NotificationsComponent() {
       };
     }
   }, [user]);
+  const openWhatsAppChat = (recipientNumber) => {
+    // Use the custom URL scheme to open WhatsApp chat with the recipient's number
+    const whatsappURL = `whatsapp://send?phone=${recipientNumber}`;
+    window.location.href = whatsappURL;
+  };
 
   console.error(error);
 
@@ -82,8 +87,9 @@ console.error(error);
                       padding: "8px 16px",
                       cursor: "pointer",
                       marginRight: "10px",
-                    }}>
+                    }}  onClick={() => openWhatsAppChat(notification.whatsappNumber)}>
                     Accept
+                   
                   </button>
                   <button
                     style={{
