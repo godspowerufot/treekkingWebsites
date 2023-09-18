@@ -71,20 +71,22 @@ button {
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
+  margin-top: 4rem;
   padding: 12px 45px;
   letter-spacing: 1px;
   text-transform: uppercase;
   box-shadow: 3px 3px 15px 0px #5b6a71;
   transition: transform 80ms ease-in;
+
 }
 
 form {
   background-color: #ffffff;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   flex-direction: column;
-  padding: 0 50px;
+  padding: 19px 50px;
   height: 100%;
   text-align: center;
 }

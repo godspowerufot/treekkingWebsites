@@ -10,15 +10,16 @@ import {
   query,
   where,
   getDocs,
-addDoc
+addDoc,updateDoc,doc
  
 } from "firebase/firestore"; // Import FieldValue
-
+import WhatsAppModal from "../functionality/whatsappModal"
 function AboutDetailsPage() {
   const { selectImage, user } = UserAuth();
   const [usersWithSameLocation, setUsersWithSameLocation] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   console.log(user?.email)
   // Query users with the same selected location
   const getUsersWithSameLocation = async (selectedImage) => {
@@ -38,14 +39,46 @@ function AboutDetailsPage() {
   };
 
 
+
+  const handleWhatsAppSave = async (whatsappNumber) => {
+    // Save the WhatsApp number to the database
+    // You can implement this part
+    const notificationsRef = collection(db, "notifications");
+    // After saving, close the modal
+    if (user) {
+      try {
+        // Update the user's profile with the WhatsApp number
+        await addDoc(notificationsRef, {
+          whatsappNumber: whatsappNumber,
+        });
+  
+        // Close the modal
+        setShowModal(false);
+      } catch (error) {
+        console.error('Error saving WhatsApp number:', error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // Check if the user has provided their WhatsApp number
+    if (!user?.whatsappNumber) {
+      // If not, show the WhatsApp number modal
+      setShowModal(true);
+    }
+  }, [user]);
+  
+
+  // ...
+
   // Function to send a trekking invitation
-  const sendTrekkingInvitation = async (senderUserId, usersWithSameLocation) => {
+  const sendTrekkingInvitation = async (senderUserId, recipientEmail) => {
     try {
-      const notificationsRef = collection(db, "notifications"); // Replace "notifications" with your collection name
+      const notificationsRef = collection(db, "notifications");
       // Create a new notification document
       await addDoc(notificationsRef, {
         sender: senderUserId,
-        location:usersWithSameLocation,
+        recipient: recipientEmail, // Use the selected user's email as the recipient
         timestamp: new Date(),
       });
       console.log("Trekking invitation sent successfully.");
@@ -53,18 +86,17 @@ function AboutDetailsPage() {
       console.error("Error sending trekking invitation:", error);
     }
   };
-  
+
   // In your component, call the function when the "Add" button is clicked
-  const handleAddFriends= () => {
-    if (user) {
-      // Assuming user.uid is the unique identifier for the user
-      sendTrekkingInvitation(user?.email,usersWithSameLocation);
-    } else {
-      // Handle the case where the user is not logged in
-      alert("Kindly login")
+  const handleAddFriends = (selectedUserEmail) => {
+    if (user && selectedUserEmail) {
+      sendTrekkingInvitation(user?.email, selectedUserEmail);
+   console.log(selectedUserEmail) } else {
+      // Handle the case where the user is not logged in or no user is selected
+      alert("Kindly login and select a user to invite.");
     }
   };
-  
+
 
   useEffect(() => {
     if (selectImage) {
@@ -103,21 +135,23 @@ function AboutDetailsPage() {
         </div>
         <div className="filter-users">
           <h2>Popular Near You</h2>
-          {loading && <p>Loading...</p>}
+          {loading &&<div className="spinners"> </div>}
           {error && <p>Error: {error.message}</p>}
           {!loading &&
-            !error &&
-            usersWithSameLocation.map((userId, uniqkey) => (
-              <div id="user-item" key={uniqkey}>
-                <Avatar /> User with ID: {userId} is going to the same Location{" "}
-               <span onClick={handleAddFriends}> <Add /></span> 
-              </div>
-            ))}
+          !error &&
+          usersWithSameLocation.map((userEmail, uniqkey) => (
+            <div id="user-item" key={uniqkey}>
+              <Avatar />
+              User with Email: {userEmail} is going to the same Location{" "}
+              <span onClick={() => handleAddFriends(userEmail)}> <Add /></span>
+            </div>
+          ))}
 
 
 
         </div>
       </div>
+      {showModal && <WhatsAppModal onSave={handleWhatsAppSave} />}
     </div>
   );
 }

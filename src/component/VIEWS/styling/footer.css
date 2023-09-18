@@ -3,16 +3,12 @@
   background-color: #213251;
   color: #fff;
   padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
 
 .footer-logo {
   display: flex;
@@ -37,13 +33,6 @@
   font-size: 18px;
 }
 
-.footer-bottom {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
 
 .social-icons {
   display: flex;

@@ -10,7 +10,7 @@ function New() {
       <div  className="landingPage">
         <Navbar />
 
-        <div className="box">
+        <div className="box" id="home">
           <div className="text" data-aos="zoom-in">
             Find a partner and Trek For Fun , It Simple,Safe and healthy!.
             <br />

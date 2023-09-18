@@ -6,7 +6,6 @@ import Card from "./card.jsx";
 import images from "../assets/images/img9.jpg";
 
 import images1 from"../assets/images/gallery-1.jpg"
-import images2 from"../assets/images/gallery-2.jpg"
 import images3 from"../assets/images/gallery-3.jpg"
 import images4 from"../assets/images/gallery-4.jpg"
 import images5 from"../assets/images/gallery-5.jpg"
@@ -30,9 +29,7 @@ function Section() {
           <div className="popularContainer">
             <h2 class="h2 section-title">Popular destination</h2>
             <p class="section-text">
-              Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec
-              nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia
-              tenetur, aptent.
+         we have four popular locations in which the school is the starting point for all users to their several locations 
             </p>
             <div class="popular-list" data-aos="zoom-in">
               {itemList.map((text, index) => (
@@ -68,8 +65,8 @@ function Section() {
             </p>
           </div>
         </div>
-        <div className="bodyHeading" data-aos="fade-up">
-          <h2>Mark your next step</h2>
+        <div className="bodyHeading" data-aos="fade-up" id="services">
+          <h2>HOW IT WORKS</h2>
 
           <div className="cardSection" id="catalogues">
       
@@ -77,7 +74,7 @@ function Section() {
           </div>
           <div class="gallery" id="gallery">
             <div class="containera">
-              <p class="section-subtitle">Photo Gallery</p>
+             
 
               <h2 class="h2 section-title">Photo's From Travellers</h2>
 

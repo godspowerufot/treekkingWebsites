@@ -37,7 +37,7 @@ function SelectLocation() {
             <div className="card" key={index}>
               <iframe
                 src={text.embedLink}
-                width="550px"
+                width="399px"
                 height="200px"
                 style={{ border: "0" }}
                 title="name"

@@ -16,8 +16,8 @@ function Navbar() {
     },
 
     {
-      text: "categories",
-      link: "#catalogues",
+      text: "About",
+      link: "#About",
     },
 
     { text: "Contact", link: "#footer" },

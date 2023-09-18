@@ -40,7 +40,7 @@ function DisplayPage() {
     <>
       <div>
       <HeaderComponent/>
-        <div className={isNotification? "" : "open"}>
+        <div className={isNotification? "" : "opens"}>
         {/* Show the sidebar only on mobile view */}
         {newNotification && (
         <NewNotification
@@ -61,7 +61,9 @@ function DisplayPage() {
               title="name"
             ></iframe>
           ) : (
-            <div> there is no mage</div>
+            
+            <div className="spinnerss"> <div className="spinners"></div></div>
+           
           )}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { LocationOnTwoTone } from "@mui/icons-material";
+import "./styling/section.css";
 
 function Card() {
   const text = [
@@ -12,40 +13,19 @@ function Card() {
       link: "Select your preferred trek, choose trekking dates, and make a reservations",
     },
     {
-      text: "Walk in Group",
-      link: " Connect with like-minded trekkers and form a group to trek together.",
+      text: "Show Invites",
+      link: " Connect with like-minded trekkers and form a  trek together.",
     },
     {
-      text: "Stay Secure",
-      link: "#news",
+      text: "Send invites ",
+      link: "Send invites to people and conect together and feel safe when trekking",
     },
   ];
 
   return (
     <>
     
-      <div className="row" style={{display:"flex",
-      flexDirection:"row"}}>
-        <div className="co" style={{flexDirection:"column"}}>
-        <div
-          className="card"
-  
-        >
-          <div className="icon">
-            {" "}
-            <LocationOnTwoTone
-              style={{
-                width: "100px",
-                height: "70px",
-              }}
-            />
-          </div>
-          <div className="textBox">
-            <h1>{text[1].text}</h1>
-            <p> {text[1].link}</p>
-          </div>
-        </div>
-        </div>
+      <div className="row">
         <div className="co" style={{flexDirection:"column"}}>
         <div
           className="card"
@@ -66,10 +46,7 @@ function Card() {
           </div>
         </div>
         </div>
-        </div>
-      <div className="row" style={{display:"flex",
-      flexDirection:"row"}}>
-            <div className="co" style={{flexDirection:"column"}}>
+        <div className="co" style={{flexDirection:"column"}}>
         <div
           className="card"
   
@@ -84,11 +61,13 @@ function Card() {
             />
           </div>
           <div className="textBox">
-            <h1>{text[3].text}</h1>
-            <p> {text[3].link}</p>
+            <h1>{text[1].text}</h1>
+            <p> {text[1].link}</p>
           </div>
         </div>
         </div>
+        </div>
+      <div className="row">
             <div className="co" style={{flexDirection:"column"}}>
         <div
           className="card"
@@ -106,6 +85,26 @@ function Card() {
           <div className="textBox">
             <h1>{text[2].text}</h1>
             <p> {text[2].link}</p>
+          </div>
+        </div>
+        </div>
+            <div className="co" style={{flexDirection:"column"}}>
+        <div
+          className="card"
+  
+        >
+          <div className="icon">
+            {" "}
+            <LocationOnTwoTone
+              style={{
+                width: "100px",
+                height: "70px",
+              }}
+            />
+          </div>
+          <div className="textBox">
+            <h1>{text[3].text}</h1>
+            <p> {text[3].link}</p>
           </div>
         </div>
         </div>

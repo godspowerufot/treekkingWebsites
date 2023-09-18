@@ -18,18 +18,15 @@ function NotificationsComponent() {
   const [error, setError] = useState(null); // To track error state
 
   useEffect(() => {
-    // Set up a query to listen for notifications specific to the user
-    if (user.uid) {
+    if (user?.email) { // Check if user is logged in and has an email
       const notificationsRef = collection(db, "notifications");
       const q = query(
         notificationsRef,
-        where("sender", "=", user.uid)
+        where("recipient", "!=",user.email ) // Use recipient as the user's email
       );
 
-      // Create a set to track unique senders
       const uniqueSenders = new Set();
 
-      // Subscribe to real-time updates
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         const newNotifications = [];
 
@@ -37,7 +34,6 @@ function NotificationsComponent() {
           const data = doc.data();
           const sender = data.sender;
 
-          // Check if the sender is unique
           if (!uniqueSenders.has(sender)) {
             uniqueSenders.add(sender);
             newNotifications.push(data);
@@ -51,17 +47,22 @@ function NotificationsComponent() {
 
       return () => {
         setLoading(false);
-        // Unsubscribe from the listener when the component unmounts
         unsubscribe();
       };
     }
   }, [user]);
+
+  console.error(error);
+
+
 console.error(error);
   return (
     <div className="notification-card">
       <h2>Trekking Invitations</h2>
       {notifications.length === 0 ? (
-        <p>No trekking invitations.</p>
+      !loading ? (
+        <div className="spinner"></div>
+      ):  <p>No trekking invitations.</p>
       ) : (
         <ul>
           {!loading ? (
@@ -71,8 +72,32 @@ console.error(error);
               <li key={index}>
                 <div className="notification-content">
                   <span className="notification-sender">
-                    User {notification.sender}
+                    User {notification.recipient}
                   </span>
+                  <button
+                    style={{
+                      backgroundColor: "#4CAF50", // Green color
+                      color: "white",
+                      border: "none",
+                      padding: "8px 16px",
+                      cursor: "pointer",
+                      marginRight: "10px",
+                    }}>
+                    Accept
+                  </button>
+                  <button
+                    style={{
+                      backgroundColor: "red",
+                      color: "white",
+                      border: "none",
+                      padding: "8px 16px",
+                      cursor: "pointer",
+                      marginRight: "10px",
+                    }}
+                  >
+                    Reject
+                  </button>
+
                 </div>
               </li>
             ))

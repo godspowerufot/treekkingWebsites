@@ -59,8 +59,8 @@ header .navbaecontainer {
 }
 nav {
   background-color: #112936;
-  height: 6vh;
-  font-family: cursive;
+  height: 7vh;
+ 
   width: 100%;
   color: white;
   z-index: 2;
@@ -82,7 +82,7 @@ li {
 
 li a {
   text-decoration: none;
-  font-family: poppins, cursive;
+  font-family: poppins, sans-serif;
   color: white;
 }
 .menu-icon {

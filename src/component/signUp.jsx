@@ -106,7 +106,7 @@ function SignUp() {
           {loading ? (
             <div className="spinner"></div>
           ) : (
-            <button onClick={handleSubmit}>LOGIN</button>
+            <button onClick={handleSubmit}>SIGNUP</button>
           )}
 
           {/* Display an error alert if there's an error */}

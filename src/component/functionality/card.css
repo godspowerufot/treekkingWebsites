@@ -15,10 +15,27 @@ html {
   display: flex;
   flex-direction: row;
 }
-.open{
+.opens{
 display: block;
 }
+.spinners {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid  #112936;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin  1.5s linear infinite;
+  margin: 0 auto;
 
+}
+.spinnerss {
+display:flex;
+align-items: center;
+justify-items: center;
+padding-top: 50%;
+
+
+}
 #ul {
   clip-path: none !important;
   background-color: white !important;
@@ -49,7 +66,7 @@ display: block;
   margin-top: 2rem !important;
   scroll-behavior: smooth;
   margin-left: 50px;
-  width:550px !important;
+
 }
 
 .card__img {
@@ -81,14 +98,15 @@ display: block;
   box-shadow: 6px 3rem 5rem 0px rgb(0 0 0 / 53%);
 
   text-align: center;
-  color: #3363ff;
+  color: #112936;
   background-color: #e6ecff;
   border: none;
   border-radius: 0.4rem;
   transition: 0.4s;
   cursor: pointer;
 }
-.card__btn span {
+.card__btn span 
+{
   margin-left: 1rem;
   transition: 0.2s;
 }
@@ -125,13 +143,13 @@ display: block;
 
 .AboutLocation {
   background: white;
-  position: fixed;
+ 
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 500px;
-  margin: auto;
+ margin-left: 50%;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -222,7 +240,7 @@ display: block;
     height: 100vh;
    
   }
-  .open{
+  .opens{
     display: none;
     }
 .openModal{

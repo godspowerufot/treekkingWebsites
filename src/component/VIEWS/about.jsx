@@ -2,7 +2,7 @@ import React from "react";
 import "./styling/about.css";
 const AboutPage = () => {
   return (
-    <div className="about-page">
+    <div className="about-page" id="About">
       <div className="about-content">
         <h1>About Our Trekking App</h1>
         <p>
