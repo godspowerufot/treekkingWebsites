@@ -53,7 +53,7 @@ function NotificationsComponent() {
   }, [user]);
   const openWhatsAppChat = (recipientNumber) => {
     // Use the custom URL scheme to open WhatsApp chat with the recipient's number
-    const whatsappURL = `whatsapp://send?phone=${recipientNumber}`;
+    const whatsappURL = `web.whatsapp.com/send?phone=${recipientNumber}`;
     window.location.href = whatsappURL;
   };
 
@@ -78,7 +78,8 @@ console.error(error);
                 <div className="notification-content">
                   <span className="notification-sender">
                     User {notification.recipient}
-                  </span>
+                  </span> 
+                  <div id="btn">
                   <button
                     style={{
                       backgroundColor: "#4CAF50", // Green color
@@ -104,6 +105,7 @@ console.error(error);
                     Reject
                   </button>
 
+                </div>
                 </div>
               </li>
             ))

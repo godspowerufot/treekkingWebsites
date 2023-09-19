@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./CardDetaills.css";
 import { Avatar } from "@mui/material";
-import { Add } from "@mui/icons-material";
+import { Add, CheckCircle } from "@mui/icons-material"; // Import the CheckCircle icon
 import { UserAuth } from "../contextapi";
 import HeaderComponent from "./HeaderComponent.jsx"
 import { db } from "../firebase";
@@ -21,6 +21,8 @@ function AboutDetailsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+   const [actionStatus, setActionStatus] = useState(""); // To track action status
+
   console.log(user?.email)
   // Query users with the same selected location
   const getUsersWithSameLocation = async (selectedImage) => {
@@ -44,6 +46,7 @@ function AboutDetailsPage() {
 
   // ...
 
+ 
   // Function to send a trekking invitation
   const sendTrekkingInvitation = async (senderUserId, recipientEmail) => {
     try {
@@ -54,11 +57,19 @@ function AboutDetailsPage() {
         recipient: recipientEmail, // Use the selected user's email as the recipient
         timestamp: new Date(),
       });
+
+      // Set the action status to "success"
+      setActionStatus("success");
+
       console.log("Trekking invitation sent successfully.");
     } catch (error) {
       console.error("Error sending trekking invitation:", error);
+
+      // Set the action status to "error"
+      setActionStatus("error");
     }
   };
+
   
   const handleWhatsAppSave = async (whatsappNumber) => {
     // Save the WhatsApp number to the database
@@ -149,8 +160,13 @@ function AboutDetailsPage() {
             <div id="user-item" key={uniqkey}>
               <Avatar />
               User with Email: {userEmail} is going to the same Location{" "}
-              <span onClick={() => handleAddFriends(userEmail)}> <Add /></span>
-            </div>
+              <span onClick={() => handleAddFriends(userEmail)}>
+                  {actionStatus === "success" ? (
+                    <CheckCircle style={{ color: "green" }} />
+                  ) : (
+                    <Add />
+                  )}
+                </span>  </div>
           ))}
 
 
