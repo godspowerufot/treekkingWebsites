@@ -14,12 +14,7 @@ const Footer = () => {
           <img src="/path/to/logo.png" alt="Trekkers Logo" />
           <span className="logo-text">Trekk</span>
         </div>
-        <div className="footer-links">
-          <a href="#home">Home</a>
-          <a href="#explore">Explore</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </div>
+     
       </div>
       <div className="footer-bottom">
         <div className="social-icons">

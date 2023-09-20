@@ -37,7 +37,7 @@ function Navbar() {
       <div className="navbaecontainer">
         <nav className="navbar">
           {/* set navelement to false on large(horizontally ) */}
-          TKK
+        
           <div className="menu-icon" onClick={handleShowNavbar}>
             {showNavbar ? <CloseIcon /> : <MenuIcon />}
           </div>

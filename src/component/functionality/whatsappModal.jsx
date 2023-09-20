@@ -5,7 +5,16 @@ function WhatsAppModal({ onSave }) {
   const [whatsappNumber, setWhatsAppNumber] = useState('');
 
   const handleSave = () => {
-    onSave(parseInt(whatsappNumber));
+  // Use parseInt() to convert the input to an integer
+  const sanitizedNumber = parseInt(whatsappNumber);
+
+  if (!isNaN(sanitizedNumber) && sanitizedNumber > 0) {
+    // Check if it's a valid positive number
+    onSave(sanitizedNumber);
+  } else {
+    // Show an error message or prevent saving
+    alert('Please enter a valid WhatsApp number.');
+  }
   };
 
   return (
@@ -13,7 +22,7 @@ function WhatsAppModal({ onSave }) {
       <div className="modal-content">
         <h2>Enter Your WhatsApp Number</h2>
         <input
-          type="text"
+          type="number"
           placeholder="WhatsApp Number"
           value={whatsappNumber}
           onChange={(e) => setWhatsAppNumber(e.target.value)}

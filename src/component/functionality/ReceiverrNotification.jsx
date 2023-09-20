@@ -22,7 +22,7 @@ function NotificationsComponent() {
       const notificationsRef = collection(db, "notifications");
       const q = query(
         notificationsRef,
-        where("recipient", "!=",user.email ) // Use recipient as the user's email
+        where("recipient", "==",user.email ) // Use recipient as the user's email
       );
 
       const uniqueSenders = new Set();
@@ -52,12 +52,12 @@ function NotificationsComponent() {
     }
   }, [user]);
   const openWhatsAppChat = (recipientNumber) => {
-    // Use the custom URL scheme to open WhatsApp chat with the recipient's number
-    const whatsappURL = `web.whatsapp.com/send?phone=${recipientNumber}`;
-    window.location.href = whatsappURL;
+    console.log(recipientNumber);
+    // Use the correct URL format to open WhatsApp chat with the recipient's number
+    const whatsappURL = `https://wa.me/${recipientNumber}`;
+    window.open(whatsappURL, "_blank");
   };
-
-  console.error(error);
+  
 
 
 console.error(error);
@@ -77,7 +77,7 @@ console.error(error);
               <li key={index}>
                 <div className="notification-content">
                   <span className="notification-sender">
-                    User {notification.recipient}
+                    User {notification.sender}
                   </span> 
                   <div id="btn">
                   <button

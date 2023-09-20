@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./CardDetaills.css";
+import './WhatsAppModal.css'
 import { Avatar } from "@mui/material";
 import { Add, CheckCircle } from "@mui/icons-material"; // Import the CheckCircle icon
 import { UserAuth } from "../contextapi";
-import HeaderComponent from "./HeaderComponent.jsx"
+import HeaderComponent from "./HeaderComponent.jsx";
 import { db } from "../firebase";
-import WhatsAppModal from "../functionality/whatsappModal"
 import {
   collection,
   query,
   where,
   getDocs,
-addDoc
- 
-} from "firebase/firestore"; // Import FieldValue
+  addDoc,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 
 function AboutDetailsPage() {
   const { selectImage, user } = UserAuth();
@@ -21,9 +22,9 @@ function AboutDetailsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
-   const [actionStatus, setActionStatus] = useState(""); // To track action status
+  const [whatsappNumber, setWhatsAppNumber] = useState("");
+  const [invitationStatus, setInvitationStatus] = useState({}); // State to track invitation status for each user
 
-  console.log(user?.email)
   // Query users with the same selected location
   const getUsersWithSameLocation = async (selectedImage) => {
     try {
@@ -32,58 +33,54 @@ function AboutDetailsPage() {
 
       const querySnapshot = await getDocs(q);
       const users = querySnapshot.docs.map((doc) => doc.id);
-      
 
       return users;
     } catch (error) {
-      console.error("Error querying users with same location:", error);
+      console.error("Error querying users with the same location:", error);
       throw error;
     }
   };
 
-
-  
-
-  // ...
-
- 
   // Function to send a trekking invitation
-  const sendTrekkingInvitation = async (senderUserId, recipientEmail) => {
+  const sendTrekkingInvitation = async (senderUserId, recipientUserId) => {
     try {
       const notificationsRef = collection(db, "notifications");
       // Create a new notification document
       await addDoc(notificationsRef, {
         sender: senderUserId,
-        recipient: recipientEmail, // Use the selected user's email as the recipient
+        recipient: recipientUserId,
+        whatsappNumber: whatsappNumber,
         timestamp: new Date(),
       });
 
-      // Set the action status to "success"
-      setActionStatus("success");
+      // Set the invitation status for the recipient user to "success"
+      setInvitationStatus((prevStatus) => ({
+        ...prevStatus,
+        [recipientUserId]: "success",
+      }));
 
       console.log("Trekking invitation sent successfully.");
     } catch (error) {
       console.error("Error sending trekking invitation:", error);
 
-      // Set the action status to "error"
-      setActionStatus("error");
+      // Set the invitation status for the recipient user to "error"
+      setInvitationStatus((prevStatus) => ({
+        ...prevStatus,
+        [recipientUserId]: "error",
+      }));
     }
   };
 
-  
-  const handleWhatsAppSave = async (whatsappNumber) => {
-    // Save the WhatsApp number to the database
-    // You can implement this part
-    const notificationsRef = collection(db, "notifications");
-    // After saving, close the modal
+  // Function to handle saving WhatsApp number
+  const handleWhatsAppSave = async () => {
+    // Save the WhatsApp number to the database and then close the modal
     if (user) {
       try {
-        // Update the user's profile with the WhatsApp number
-        await addDoc(notificationsRef, {
+        const userRef = collection(db, "notifications");
+        await addDoc(userRef, {
           whatsappNumber: whatsappNumber,
         });
-  
-        // Close the modal
+
         setShowModal(false);
       } catch (error) {
         console.error('Error saving WhatsApp number:', error);
@@ -98,32 +95,16 @@ function AboutDetailsPage() {
       setShowModal(true);
     }
   }, [user]);
-  
-
-
-  // In your component, call the function when the "Add" button is clicked
-  const handleAddFriends = (selectedUserEmail) => {
-    if (user && selectedUserEmail) {
-      sendTrekkingInvitation(user?.email, selectedUserEmail);
-   console.log(selectedUserEmail) } else {
-      // Handle the case where the user is not logged in or no user is selected
-      alert("Kindly login and select a user to invite.");
-    }
-  };
-
 
   useEffect(() => {
-    console.log("selectImage:", selectImage);
-    console.log("user:", user);
-  
     if (selectImage) {
       setLoading(true);
       setError(null);
-  
+
       // Fetch users with the same selected location
       getUsersWithSameLocation(selectImage)
         .then((userIds) => {
-          console.log("Users with same location:", userIds);
+          console.log("Users with the same location:", userIds);
           setUsersWithSameLocation(userIds);
         })
         .catch((error) => {
@@ -134,7 +115,6 @@ function AboutDetailsPage() {
         });
     }
   }, [selectImage, user]);
-  // Include user in the dependency array
 
   return (
     <div className="about-details-page">
@@ -142,39 +122,50 @@ function AboutDetailsPage() {
       <div className="heading">
         <h2>Your Trek</h2>
         <div className="card-img">
-        <iframe
-                src={selectImage}
-                width="500px"
-                height="300px"
-                style={{ border: "5px" }}
-                title="name"
-                loading="lazy"></iframe>
+          <iframe
+            src={selectImage}
+            width="500px"
+            height="300px"
+            style={{ border: "5px" }}
+            title="name"
+            loading="lazy"
+          ></iframe>
         </div>
         <div className="filter-users">
           <h2>Popular Near You</h2>
-          {loading &&<div className="spinners"> </div>}
+          {loading && <div className="spinners"> </div>}
           {error && <p>Error: {error.message}</p>}
           {!loading &&
-          !error &&
-          usersWithSameLocation.map((userEmail, uniqkey) => (
-            <div id="user-item" key={uniqkey}>
-              <Avatar />
-              User with Email: {userEmail} is going to the same Location{" "}
-              <span onClick={() => handleAddFriends(userEmail)}>
-                  {actionStatus === "success" ? (
+            !error &&
+            usersWithSameLocation.map((userEmail, uniqkey) => (
+              <div id="user-item" key={uniqkey}>
+                <Avatar />
+                User with Email: {userEmail} is going to the same Location{" "}
+                <span onClick={() => sendTrekkingInvitation(user?.email, userEmail)}>
+                  {invitationStatus[userEmail] === "success" ? (
                     <CheckCircle style={{ color: "green" }} />
                   ) : (
                     <Add />
                   )}
-                </span>  </div>
-          ))}
-
-
-
+                </span>{" "}
+              </div>
+            ))}
         </div>
       </div>
-      {showModal && <WhatsAppModal onSave={handleWhatsAppSave} />}
-
+      {showModal && (
+        <div className="whatsapp-modal">
+          <div className="modal-content">
+            <h2>Enter Your WhatsApp Number</h2>
+            <input
+              type="text"
+              placeholder="WhatsApp Number"
+              value={whatsappNumber}
+              onChange={(e) => setWhatsAppNumber(e.target.value)}
+            />
+            <button onClick={handleWhatsAppSave}>Save</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
