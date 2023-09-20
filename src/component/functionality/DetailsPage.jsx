@@ -15,6 +15,7 @@ import {
   doc,
   getDoc,
 } from "firebase/firestore";
+import { v4 as uuidv4 } from 'uuid'; // Import the v4 function from uuid
 
 function AboutDetailsPage() {
   const { selectImage, user } = UserAuth();
@@ -43,15 +44,18 @@ function AboutDetailsPage() {
 
   // Function to send a trekking invitation
   const sendTrekkingInvitation = async (senderUserId, recipientUserId) => {
+    const invitationId = uuidv4();
     try {
       const notificationsRef = collection(db, "notifications");
       // Create a new notification document
       await addDoc(notificationsRef, {
+        id: invitationId, // Include the unique ID
         sender: senderUserId,
         recipient: recipientUserId,
         whatsappNumber: whatsappNumber,
         selectLocation:selectImage,
         timestamp: new Date(),
+
       });
 
       // Set the invitation status for the recipient user to "success"
