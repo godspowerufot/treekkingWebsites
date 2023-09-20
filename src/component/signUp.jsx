@@ -4,7 +4,6 @@ import { Facebook } from "@mui/icons-material";
 import { WhatsApp } from "@mui/icons-material";
 import "./Login.css";
 
-import { Google } from "@mui/icons-material";
 import { UserAuth } from "./contextapi";
 import { useNavigate } from "react-router";
 
@@ -48,22 +47,7 @@ function SignUp() {
     }
   };
 
-  const googlesubmit = async (event) => {
-    event.preventDefault();
-    // Same loading and error handling as in handleSubmit function
-    setLoading(true);
-    setError(null);
 
-    try {
-      await Googles();
-      setLoading(false);
-      navigate("/function");
-    } catch (error) {
-      console.error(error);
-      setLoading(false);
-      setError("Sign-up with Google failed. Please try again.");
-    }
-  };
 
   return (
     <div id="body">
@@ -71,16 +55,11 @@ function SignUp() {
         <form action="#">
           <h1>SIGNUP</h1>
           <div class="social-container">
-            <a
-              href="https://web.facebook.com/profile.php?id=100086359764945&_rdc=1&_rdr"
-              className="socials"
-            >
-              <Facebook />
-            </a>
+       
             <span className="socials" onClick={googlesubmit}>
               <Google />
             </span>
-            <a href="http://wa.me/+2347089293254" className="socials">
+            <a href="http://wa.me/+2349018902180" className="socials">
               <WhatsApp />
             </a>
           </div>

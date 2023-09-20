@@ -75,7 +75,6 @@ function NotificationsComponent() {
     window.open(whatsappURL, "_blank");
   };
 
-  // Function to handle rejecting an invitation
   const rejectInvitation = async (notificationId) => {
     try {
       const notificationRef = doc(db, "notifications", notificationId);
@@ -89,6 +88,7 @@ function NotificationsComponent() {
       console.error("Error rejecting invitation:", error);
     }
   };
+
 
   // Log any errors to the console
   console.error(error);
@@ -145,7 +145,6 @@ function NotificationsComponent() {
                     >
                       Reject
                     </button>
-                    <h3> </h3>
                   </div>
                 </div>
               </li>

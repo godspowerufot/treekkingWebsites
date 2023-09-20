@@ -45,6 +45,7 @@ function AboutDetailsPage() {
   // Function to send a trekking invitation
   const sendTrekkingInvitation = async (senderUserId, recipientUserId) => {
     const invitationId = uuidv4();
+    console.log(invitationId)
     try {
       const notificationsRef = collection(db, "notifications");
       // Create a new notification document

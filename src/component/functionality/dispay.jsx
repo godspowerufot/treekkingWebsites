@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./card.css";
 import { Avatar } from "@mui/material";
-import { Delete } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { Login } from "@mui/icons-material";
 import { useNavigate } from "react-router";

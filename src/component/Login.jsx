@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { React } from "react";
 import "./Login.css";
-import { Facebook } from "@mui/icons-material";
 import { Phone } from "@mui/icons-material";
 import { WhatsApp } from "@mui/icons-material";
 import { useNavigate } from "react-router";
@@ -44,16 +43,13 @@ setError(" failed. Please try again.")    }
       <div class="container" id="container">
         <form action="#">
           <h1>Login</h1>
+
           <div class="social-container">
-            <a
-              href="https://web.facebook.com/profile.php?id=100086359764945&_rdc=1&_rdr"
-              className="socials">
-              <Facebook />
-            </a>
-            <a href="tel:+2347089293254" className="socials">
+        
+            <a href="tel:+2349018902180" className="socials">
               <Phone />
             </a>
-            <a href="http://wa.me/+2347089293254" className="socials">
+            <a href="http://wa.me/+2349018902180" className="socials">
               <WhatsApp />
             </a>
           </div>
@@ -78,7 +74,7 @@ setError(" failed. Please try again.")    }
   {loading ? (
             <div className="spinner"></div>
           ) : (
-            <button onClick={handleSubmit}>SIGNIN</button>
+            <button onClick={handleSubmit} style={{backgroundColor:" #096827"} } >SIGNIN</button>
           )}
 
           {/* Display an error alert if there's an error */}

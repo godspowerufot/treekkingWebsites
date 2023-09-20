@@ -237,7 +237,7 @@ function MiniDrawer() {
                   paddingLeft: 3.8,
                 }}>
                 <Link
-                  to="/Account"
+                  to="/"
                   style={{
                     fontSize: "5em",
                     textDecoration: "none",
@@ -271,7 +271,7 @@ function MiniDrawer() {
                   paddingLeft: 3.8,
                 }}>
                 <Link
-                  to="/Search"
+                  to="/"
                   style={{
                     fontSize: "5em",
                     textDecoration: "none",

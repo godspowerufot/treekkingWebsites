@@ -11,7 +11,6 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <img src="/path/to/logo.png" alt="Trekkers Logo" />
           <span className="logo-text">Trekk</span>
         </div>
      
@@ -24,16 +23,14 @@ const Footer = () => {
           >
             <Facebook />
           </a>
-          <a href="tel:+2347089293254" className="icons">
+          <a href="tel:+2349058386152" className="icons">
             <Phone />
           </a>
-          <a href="http://wa.me/+2347089293254" className="icons">
+          <a href="http://wa.me/+2349018902180" className="icons">
             <WhatsApp />
           </a>
-          <a href="http://t.me/Zack3254" className="icons">
-            <Telegram />
-          </a>
-          <a href="https://mail.google.com/" className="icons">
+       
+          <a href="https://mail.google.com/ufotgodspower8" className="icons">
             <Mail />
           </a>
         </div>

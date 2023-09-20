@@ -46,9 +46,7 @@ function SelectLocation() {
               <div className="card__content">
                 <h1 className="card__header">{text.header}</h1>
                 <p className="card__text">
-                  Look up at the night sky, and find yourself{" "}
-                  <strong>immersed</strong> in the amazing mountain range of
-                  Aspen.{" "}
+                 Get to that location at a slow pace , with smiles and laughter. Dont u ever get worry about pains that is what your leg was meant for  (to walk)
                 </p>
                 <div className="card__btn">
                   <Link
