@@ -50,6 +50,7 @@ function AboutDetailsPage() {
         sender: senderUserId,
         recipient: recipientUserId,
         whatsappNumber: whatsappNumber,
+        selectLocation:selectImage,
         timestamp: new Date(),
       });
 

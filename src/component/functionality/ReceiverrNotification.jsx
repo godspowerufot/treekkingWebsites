@@ -22,7 +22,8 @@ function NotificationsComponent() {
       const notificationsRef = collection(db, "notifications");
       const q = query(
         notificationsRef,
-        where("recipient", "==",user.email ) // Use recipient as the user's email
+        where("recipient", "==",user?.email ), // Use recipient as the user's email
+         where("selectLocation", "==", selectImage) 
       );
 
       const uniqueSenders = new Set();
