@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/treekkingWebsites/static/css/main.4a9b4e8c.css",
+    "main.js": "/treekkingWebsites/static/js/main.f811ed62.js",
+    "static/js/787.f10db61a.chunk.js": "/treekkingWebsites/static/js/787.f10db61a.chunk.js",
+    "static/media/silhouette-men-hiking-mountain-peak-sunset-generative-ai.jpg": "/treekkingWebsites/static/media/silhouette-men-hiking-mountain-peak-sunset-generative-ai.3373b861540bf3258b0e.jpg",
+    "static/media/hero-banner.jpg": "/treekkingWebsites/static/media/hero-banner.0245fcc4873afc36eb38.jpg",
+    "static/media/img9.jpg": "/treekkingWebsites/static/media/img9.4c341ef80cb0bc566ee4.jpg",
+    "static/media/gallery-3.jpg": "/treekkingWebsites/static/media/gallery-3.b6cfa07fb880c9f3deec.jpg",
+    "static/media/gallery-1.jpg": "/treekkingWebsites/static/media/gallery-1.ad27c9dc137c72ed78e8.jpg",
+    "static/media/gallery-5.jpg": "/treekkingWebsites/static/media/gallery-5.75937ec532590dc9432d.jpg",
+    "static/media/gallery-4.jpg": "/treekkingWebsites/static/media/gallery-4.5a2958af7709da849711.jpg",
+    "index.html": "/treekkingWebsites/index.html",
+    "main.4a9b4e8c.css.map": "/treekkingWebsites/static/css/main.4a9b4e8c.css.map",
+    "main.f811ed62.js.map": "/treekkingWebsites/static/js/main.f811ed62.js.map",
+    "787.f10db61a.chunk.js.map": "/treekkingWebsites/static/js/787.f10db61a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4a9b4e8c.css",
+    "static/js/main.f811ed62.js"
+  ]
+}
