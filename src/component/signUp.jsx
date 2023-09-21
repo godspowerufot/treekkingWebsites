@@ -56,9 +56,7 @@ function SignUp() {
           <h1>SIGNUP</h1>
           <div class="social-container">
        
-            <span className="socials" onClick={googlesubmit}>
-              <Google />
-            </span>
+       
             <a href="http://wa.me/+2349018902180" className="socials">
               <WhatsApp />
             </a>
