@@ -179,7 +179,7 @@ function AboutDetailsPage() {
               src={selectImage}
               style={{ border: "0" }}
               title="name"
-              width="300px"
+              width="395px"
               height="300px"
             ></iframe>
           ) : (
@@ -197,7 +197,7 @@ function AboutDetailsPage() {
             usersWithSameLocation.map((userEmail, uniqkey) => (
               <div id="user-item" key={uniqkey}>
             
-                User with Email: {userEmail} is going to the same Location{" "}
+                User with Email: <h2>{userEmail}  </h2 >is going to the same Location{" "}
                 <span onClick={() => sendTrekkingInvitation(user?.email, userEmail)}>
                   {invitationStatus[userEmail] === "success" ? (
                     <CheckCircle style={{ color: "green" }} />
