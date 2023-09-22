@@ -37,7 +37,7 @@ function SelectLocation() {
             <div className="card" key={index}>
               <iframe
                 src={text.embedLink}
-                width="399px"
+                width="297px"
                 height="200px"
                 style={{ border: "0" }}
                 title="name"
@@ -62,12 +62,6 @@ function SelectLocation() {
                     />
                   </Link>
 
-                  <AccountCircle
-                    style={{
-                      width: "40px",
-                      height: "20px",
-                    }}
-                  />
                 </div>
               </div>
             </div>

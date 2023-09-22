@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "./card.css";
-import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Login } from "@mui/icons-material";
+import { LogoutRounded } from "@mui/icons-material";
 import { useNavigate } from "react-router";
-
+import { NotificationsNoneRounded } from "@mui/icons-material";
+import { Person2Rounded} from "@mui/icons-material";
 import NotificationsComponent from "./ReceiverrNotification";
 import NewNotification from "./newNotification";
 import { UserAuth } from "../contextapi";
 import CloseIcon from "@mui/icons-material/Close";
-import MenuIcon from "@mui/icons-material/Menu";
-import HeaderComponent from "./HeaderComponent.jsx"
+import { Home } from "@mui/icons-material";
+import { ChevronLeft} from "@mui/icons-material";
 function DisplayPage() {
   const { selectImage } = UserAuth();
   const [isNotification, setIsNotification] = useState(false);
@@ -18,6 +18,25 @@ function DisplayPage() {
   // Function to toggle the sidebar
 
   const [newNotification] = useState(null);
+  const itemList = [
+    {
+      
+     
+       link: "/",
+      icon:<Home/>
+
+    },
+    
+    {
+        link: "/AboutDetailsPage",
+        
+        icon:<Person2Rounded width="36px" height="37px" />
+        
+      },
+      
+      
+   
+  ];
   const toggleNotification = () => {
     setIsNotification((p) => !isNotification);
   };
@@ -38,7 +57,7 @@ function DisplayPage() {
   return (
     <>
       <div>
-      <HeaderComponent/>
+     
         <div className={isNotification? "" : "opens"}>
         {/* Show the sidebar only on mobile view */}
         {newNotification && (
@@ -69,27 +88,49 @@ function DisplayPage() {
       <div className="AboutLocation">
       
         <div className="rounded">
-          <div className="mapdescription"  onClick={handleLogout}>
-          
-            <Login width="2em" height="2em" />
-           
+          <div className="mapdescription"  >
+          <Link  to='/function'  style={{
+                      
+                        color: "black",
+                      
+                      }} >
+                 
+          <ChevronLeft/>
+                </Link>
+        
           </div>
-          <div className="mapdescription">
-           
-              <Link to="/AboutDetailsPage">
-                <Avatar width="36px" height="37px" />
-              </Link>
-            
-          </div>
+        
+        
           {/* Show the toggle button for sidebar only on mobile view */}
           <div className="mapdescription" onClick={toggleNotification} >
             {" "}
     
             
-            {isNotification? <CloseIcon /> : <MenuIcon />}
+            {isNotification? <CloseIcon /> : < NotificationsNoneRounded />}
         
         
           </div>
+          {itemList.map((text, index) => (
+            <div className="mapdescription">
+
+            
+                <Link key={index} to={text.link} smooth  style={{
+                      
+                      color: "black",
+                    
+                    }}>
+                  {text.icon}
+                </Link>
+             
+                </div>
+            ))}
+            <div className="mapdescription"  onClick={handleLogout} >
+            <LogoutRounded width="2em" height="2em"  />
+
+        
+          </div>
+        
+        
         </div>
       </div>
     </>

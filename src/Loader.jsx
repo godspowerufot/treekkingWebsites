@@ -6,16 +6,14 @@ const Loader = () => {
 
   return (
     <div className="loader">
-      <div className="text-trackers"> TREKKERS</div>
-      <div className="text-trackerss" data-aos="fade-in">
-        FOR
-      </div>
-      <div
-        className="text-trackersss"
-        data-aos="fade-right"
-        data-aos-ease="ease-in">
-        FUN
-      </div>
+<div class="loader1">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+     
     </div>
   );
 };

@@ -1,97 +1,164 @@
-import { useState } from "react";
-import { React } from "react";
-import { Facebook } from "@mui/icons-material";
-import { WhatsApp } from "@mui/icons-material";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
 import "./Login.css";
-
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { UserAuth } from "./contextapi";
-import { useNavigate } from "react-router";
-
-function SignUp() {
-  const { signUp, Googles } = UserAuth();
-  let navigate = useNavigate();
-
-  const [note, setnote] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [loading, setLoading] = useState(false); // To track loading state
-  const [error, setError] = useState(null); // To track error state
-
-  function UpdateNote(event) {
-    event.preventDefault();
-    const { name, value } = event.target;
-    setnote((newnote) => ({ ...newnote, [name]: value }));
-  }
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    // Set loading to true to show the spinner
-    setLoading(true);
-    setError(null);
-
-    try {
-      await signUp(note.email, note.password);
-      setLoading(false); // Turn off the spinner
-      navigate("/function");
-    } catch (error) {
-      console.error(error);
-
-      // Set loading to false to hide the spinner
-      setLoading(false);
-
-      // Set the error state to display an alert
-      setError("Sign-up failed. Please try again.");
-    }
-  };
-
-
-
+function Copyright(props) {
   return (
-    <div id="body">
-      <div class="container" id="container">
-        <form action="#">
-          <h1>SIGNUP</h1>
-          <div class="social-container">
-       
-       
-            <a href="http://wa.me/+2349018902180" className="socials">
-              <WhatsApp />
-            </a>
-          </div>
-          <span>or use your account</span>
-          <input
-            type="text"
-            name="email"
-            placeholder="email"
-            value={note.email}
-            onChange={UpdateNote}
-          />
-
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            value={note.password}
-            onChange={UpdateNote}
-          />
-          <a href="www.404.com">Forgot your password?</a>
-
-          {/* Display a spinner while loading */}
-          {loading ? (
-            <div className="spinner"></div>
-          ) : (
-            <button onClick={handleSubmit}>SIGNUP</button>
-          )}
-
-          {/* Display an error alert if there's an error */}
-          {error && <div className="error-alert">{error}</div>}
-        </form>
-      </div>
-    </div>
+    <Typography
+      variant="body3"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
   );
 }
 
-export default SignUp;
+const theme = createTheme();
+
+export default function SignUp() {
+  
+  const { signUp } = UserAuth();
+  const [loading, setLoading] = useState(false); // To track loading state
+  const [error, setError] = useState(null); // To track error state
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  setLoading(true);
+  setError(null);
+    try {
+      await signUp(form.email, form.password);
+      setLoading(false)
+      navigate("/function");
+    } catch (error) {
+      setLoading(false);
+
+      // Set the error state to display an alert
+      setError(" failed. Please try again.") 
+    }
+  };
+  // update email and password form data
+  const [form, setform] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+  function handlechange(event) {
+    const { name, value } = event.target;
+    setform((p) => {
+      return { ...p, [name]: value };
+    });
+  }
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign Up
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{
+              mt: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="email"
+              label="email"
+              type="email"
+              onChange={handlechange}
+              value={form.email}
+              id="email"
+              autoComplete="email"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              onChange={handlechange}
+              value={form.password}
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+             {loading ? (
+            <div className="spinner"></div>
+          ) : (
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign Up
+            </Button>          )}
+
+          {/* Display an error alert if there's an error */}
+          {error && <div className="error-alert">{error}</div>}
+            
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="/" variant="body2">
+                  {"Don't have an account? Sign in"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
+  );
+}

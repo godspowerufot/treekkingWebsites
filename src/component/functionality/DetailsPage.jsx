@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./CardDetaills.css";
 import './WhatsAppModal.css'
-import { Avatar } from "@mui/material";
-import { Add, CheckCircle } from "@mui/icons-material"; // Import the CheckCircle icon
+import "./card.css";
+import { Link } from "react-router-dom";
+import { LogoutRounded } from "@mui/icons-material";
+import { useNavigate } from "react-router";
+import { NotificationsNoneRounded } from "@mui/icons-material";
+import { Person2Rounded} from "@mui/icons-material";
+import NotificationsComponent from "./ReceiverrNotification";
+import NewNotification from "./newNotification";
 import { UserAuth } from "../contextapi";
-import HeaderComponent from "./HeaderComponent.jsx";
+import { Home } from "@mui/icons-material";
+import CloseIcon from "@mui/icons-material/Close";
+import { ChevronLeft} from "@mui/icons-material";
+import { CheckCircle } from "@mui/icons-material"; // Import the CheckCircle icon
 import { db } from "../firebase";
 import {
   collection,
@@ -18,13 +27,47 @@ import {
 import { v4 as uuidv4 } from 'uuid'; // Import the v4 function from uuid
 
 function AboutDetailsPage() {
-  const { selectImage, user } = UserAuth();
+  const { selectImage, user,logOut } = UserAuth();
   const [usersWithSameLocation, setUsersWithSameLocation] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [whatsappNumber, setWhatsAppNumber] = useState("");
   const [invitationStatus, setInvitationStatus] = useState({}); // State to track invitation status for each user
+  const [isNotification, setIsNotification] = useState(false);
+  const navigate = useNavigate();
+  console.log(user);
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/");
+    } catch (error) {
+      console.log("error");
+    }
+  };
+  // Function to toggle the sidebar
+
+  const [newNotification] = useState(null);
+  const itemList = [
+    {
+      
+     
+       link: "/",
+      icon:<Home/>
+
+    },
+    
+    {
+        link: "/AboutDetailsPage",
+        
+        icon:<Person2Rounded width="36px" height="37px" />
+        
+      },
+      
+      
+   
+  ];
+
 
   // Query users with the same selected location
   const getUsersWithSameLocation = async (selectedImage) => {
@@ -121,22 +164,42 @@ function AboutDetailsPage() {
         });
     }
   }, [selectImage, user]);
+    const toggleNotification = () => {
+    setIsNotification((p) => !isNotification);
+  };
 
   return (
     <div className="about-details-page">
-      <HeaderComponent />
+        <div className={isNotification? "" : "opens"}>
+        {/* Show the sidebar only on mobile view */}
+        {newNotification && (
+        <NewNotification
+          notification={newNotification}
+        />
+      )}
+      {/* Render the NotificationsComponent */}
+      <NotificationsComponent
+        // Pass the function to handle new notifications
+      /></div>
       <div className="heading">
         <h2>Your Trek</h2>
-        <div className="card-img">
-          <iframe
-            src={selectImage}
-            width="500px"
-            height="300px"
-            style={{ border: "5px" }}
-            title="name"
-            loading="lazy"
-          ></iframe>
-        </div>
+       
+          {" "}
+        
+          {selectImage ? (
+            <iframe
+              src={selectImage}
+              style={{ border: "0" }}
+              title="name"
+              width="300px"
+              height="300px"
+            ></iframe>
+          ) : (
+            
+            <div className="spinnerss"> <div className="spinners"></div></div>
+           
+          )}
+      
         <div className="filter-users">
           <h2>Popular Near You</h2>
           {loading && <div className="spinners"> </div>}
@@ -145,18 +208,68 @@ function AboutDetailsPage() {
             !error &&
             usersWithSameLocation.map((userEmail, uniqkey) => (
               <div id="user-item" key={uniqkey}>
-                <Avatar />
+            
                 User with Email: {userEmail} is going to the same Location{" "}
                 <span onClick={() => sendTrekkingInvitation(user?.email, userEmail)}>
                   {invitationStatus[userEmail] === "success" ? (
                     <CheckCircle style={{ color: "green" }} />
                   ) : (
-                    <Add />
+                    <Person2Rounded />
                   )}
                 </span>{" "}
               </div>
             ))}
         </div>
+        <div className="wrapper">
+        <div className="AboutLocation">
+      
+      <div className="rounded">
+        <div className="mapdescription"  >
+        <Link  to='/function'  style={{
+                    
+                      color: "black",
+                    
+                    }} >
+               
+        <ChevronLeft/>
+              </Link>
+      
+        </div>
+      
+      
+        {/* Show the toggle button for sidebar only on mobile view */}
+        <div className="mapdescription" onClick={toggleNotification} >
+          {" "}
+  
+          
+          {isNotification? <CloseIcon /> : < NotificationsNoneRounded />}
+      
+      
+        </div>
+        {itemList.map((text, index) => (
+          <div className="mapdescription">
+
+          
+              <Link key={index} to={text.link} smooth  style={{
+                    
+                    color: "black",
+                  
+                  }}>
+                {text.icon}
+              </Link>
+           
+              </div>
+          ))}
+          <div className="mapdescription"  onClick={handleLogout} >
+          <LogoutRounded width="2em" height="2em"  />
+
+      
+        </div>
+      
+      
+      </div>
+    </div>
+    </div>
       </div>
       {showModal && (
         <div className="whatsapp-modal">
@@ -170,8 +283,10 @@ function AboutDetailsPage() {
             />
             <button onClick={handleWhatsAppSave}>Save</button>
           </div>
+
         </div>
       )}
+    
     </div>
   );
 }

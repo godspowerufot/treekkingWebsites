@@ -30,7 +30,7 @@ function New() {
           </div>
         </div>
         <Section />
-        <Footer />
+      
       </div>
     </>
   );

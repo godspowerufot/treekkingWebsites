@@ -1,6 +1,6 @@
 /* Footer Styles */
 .footer {
-  background-color: #213251;
+  background-color: #112936;
   color: #fff;
   padding: 40px 0;
   display: flex;
@@ -37,6 +37,7 @@
 .social-icons {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .icons {

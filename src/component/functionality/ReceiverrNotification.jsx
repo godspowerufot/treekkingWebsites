@@ -10,6 +10,8 @@ import {
 import { db } from "../firebase";
 import "./NotificationsComponent.css"; // Import your CSS file for styling
 import { UserAuth } from "../contextapi";
+import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
+import ThumbDownRoundedIcon from '@mui/icons-material/ThumbDownRounded';
 
 function NotificationsComponent() {
   // Get the user and selectImage from context (assuming user authentication)
@@ -114,7 +116,7 @@ function NotificationsComponent() {
                 <div className="notification-content">
                   {/* Display the sender's information */}
                   <span className="notification-sender">
-                    User {notification.sender}
+                  <Person2Rounded width="36px" height="37px" /> {notification.sender}
                   </span> 
                   <div id="btn">
                     {/* Button to accept the invitation */}
@@ -129,7 +131,7 @@ function NotificationsComponent() {
                       }}
                       onClick={() => openWhatsAppChat(notification.whatsappNumber)}
                     >
-                      Accept
+                      <ThumbUpAltRoundedIcon />  
                     </button>
                     {/* Button to reject the invitation */}
                     <button
@@ -143,7 +145,7 @@ function NotificationsComponent() {
                       }}
                            onClick={() => rejectInvitation(notification.id)} // Pass the notification ID to rejectInvitation
                     >
-                      Reject
+                <ThumbDownRoundedIcon/>  
                     </button>
                   </div>
                 </div>

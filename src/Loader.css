@@ -16,64 +16,54 @@
   visibility: visible;
 }
 
-.text-trackers,
-.text-trackerss,
-.text-trackersss {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-family: poppins;
-  color: white;
-  font-size: 24px;
-  white-space: nowrap;
+.loader1 {
+  display:inline-block;
+  font-size:0px;
+  padding:0px;
 }
-.text-trackers {
-  animation: slide-out 2s forwards;
+.loader1 span {
+  vertical-align:middle;
+  border-radius:100%;
+  
+  display:inline-block;
+  width:10px;
+  height:10px;
+  margin:3px 2px;
+  -webkit-animation:loader1 0.8s linear infinite alternate;
+  animation:loader1 0.8s linear infinite alternate;
 }
-.text-trackerss {
-  padding-top: 4%;
+.loader1 span:nth-child(1) {
+  -webkit-animation-delay:-1s;
+  animation-delay:-1s;
+ background:rgb(255, 255, 255);
 }
-.text-trackersss {
-  padding-top: 7%;
+.loader1 span:nth-child(2) {
+  -webkit-animation-delay:-0.8s;
+  animation-delay:-0.8s;
+ background:rgb(255, 255, 255);
+}
+.loader1 span:nth-child(3) {
+  -webkit-animation-delay:-0.26666s;
+  animation-delay:-0.26666s;
+ background:rgba(245, 103, 115,1);
+}
+.loader1 span:nth-child(4) {
+  -webkit-animation-delay:-0.8s;
+  animation-delay:-0.8s;
+ background:rgb(255, 255, 255);
+ 
+}
+.loader1 span:nth-child(5) {
+  -webkit-animation-delay:-1s;
+  animation-delay:-1s;
+ background:rgba(178, 168, 169, 0.936);
 }
 
-@keyframes slide-in {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+@keyframes loader1 {
+  from {transform: scale(0, 0);}
+  to {transform: scale(1, 1);}
 }
-
-@keyframes slide-out {
-  0% {
-    letter-spacing: 6em;
-    opacity: 0;
-  }
-  40% {
-    opacity: 6;
-  }
-  100% {
-    letter-spacing: normal;
-    opacity: 1;
-  }
+@-webkit-keyframes loader1 {
+  from {-webkit-transform: scale(0, 0);}
+  to {-webkit-transform: scale(1, 1);}
 }
-
-@media (max-width: 480px) {
-  .text-trackersss {
-    padding-top: 80px;
-  }
-  .text-trackerss {
-    padding-top: 43px;
-  }
-}
-@media (max-width: 768px) {
-  .text-trackersss {
-    padding-top: 80px;
-  }
-  .text-trackerss {
-    padding-top: 43px;
-  }
-}
-     

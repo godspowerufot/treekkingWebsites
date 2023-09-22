@@ -4,6 +4,7 @@ import "./styling/header.css";
 import AboutPage from "./about.jsx";
 import Card from "./card.jsx";
 import images from "../assets/images/img9.jpg";
+import Footer from "./footer";
 
 import images1 from"../assets/images/gallery-1.jpg"
 import images3 from"../assets/images/gallery-3.jpg"
@@ -102,15 +103,21 @@ function Section() {
                   </div>
                 </div>
                 <div className="row">
-                
                   <div className="col">
                     <div class="gallery-item">
                       <figure class="gallery-image">
-                        <img src={images3} alt="San miguel,italy" />
+                        <img src={images4} alt="San miguel,italy" />
                       </figure>
                     </div>
                   </div>
-                </div>
+                  <div className="col">
+                    <div class="gallery-item">
+                      <figure class="gallery-image">
+                        <img src={images5} alt="San miguel,italy" />
+                      </figure>
+                    </div>
+                  </div>
+            </div>
                 <div className="row">
                   <div className="col">
                     <div class="gallery-item">
@@ -132,6 +139,7 @@ function Section() {
           </div>
           <AboutPage />
         </div>
+        <Footer />
       </section>
     </>
   );
