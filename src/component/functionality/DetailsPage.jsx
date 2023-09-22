@@ -164,23 +164,11 @@ function AboutDetailsPage() {
         });
     }
   }, [selectImage, user]);
-    const toggleNotification = () => {
-    setIsNotification((p) => !isNotification);
-  };
+  
 
   return (
     <div className="about-details-page">
-        <div className={isNotification? "" : "opens"}>
-        {/* Show the sidebar only on mobile view */}
-        {newNotification && (
-        <NewNotification
-          notification={newNotification}
-        />
-      )}
-      {/* Render the NotificationsComponent */}
-      <NotificationsComponent
-        // Pass the function to handle new notifications
-      /></div>
+    
       <div className="heading">
         <h2>Your Trek</h2>
        
@@ -238,11 +226,11 @@ function AboutDetailsPage() {
       
       
         {/* Show the toggle button for sidebar only on mobile view */}
-        <div className="mapdescription" onClick={toggleNotification} >
+        <div className="mapdescription" >
           {" "}
   
           
-          {isNotification? <CloseIcon /> : < NotificationsNoneRounded />}
+          < NotificationsNoneRounded />
       
       
         </div>

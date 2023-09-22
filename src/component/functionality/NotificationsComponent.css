@@ -30,6 +30,9 @@
     padding: 0;
     display: contents;
   }
+  .notification-card li {
+   padding-inline:0px;
+  }
   
   .notification-content {
     display: flex;
