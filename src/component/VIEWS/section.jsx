@@ -5,7 +5,7 @@ import AboutPage from "./about.jsx";
 import Card from "./card.jsx";
 import images from "../assets/images/img9.jpg";
 import Footer from "./footer";
-
+import LockPersonIcon from '@mui/icons-material/LockPerson';
 import images1 from"../assets/images/gallery-1.jpg"
 import images3 from"../assets/images/gallery-3.jpg"
 import images4 from"../assets/images/gallery-4.jpg"
@@ -126,13 +126,7 @@ function Section() {
                       </figure>
                     </div>
                   </div>
-                  <div className="col">
-                    <div class="gallery-item">
-                      <figure class="gallery-image">
-                        <img src={images5} alt="San miguel,italy" />
-                      </figure>
-                    </div>
-                  </div>
+                
                 </div>
               </div>
             </div>

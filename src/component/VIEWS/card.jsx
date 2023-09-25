@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { LocationOnTwoTone } from "@mui/icons-material";
 import "./styling/section.css";
-
+import LockPersonIcon from '@mui/icons-material/LockPerson';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 function Card() {
   const text = [
     {
@@ -33,7 +35,7 @@ function Card() {
         >
           <div className="icon">
             {" "}
-            <LocationOnTwoTone
+            <LockPersonIcon
               style={{
                 width: "100px",
                 height: "70px",
@@ -75,7 +77,7 @@ function Card() {
         >
           <div className="icon">
             {" "}
-            <LocationOnTwoTone
+            < VisibilityIcon
               style={{
                 width: "100px",
                 height: "70px",
@@ -95,7 +97,7 @@ function Card() {
         >
           <div className="icon">
             {" "}
-            <LocationOnTwoTone
+            <FileUploadIcon
               style={{
                 width: "100px",
                 height: "70px",

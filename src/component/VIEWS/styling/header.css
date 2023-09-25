@@ -20,7 +20,7 @@
   display: flex;
   justify-content: center;
   min-width:100vw;
-
+  height: 100vh; /* Adjust the height as needed */
   align-items: center;
   place-items: center;
   min-height: 100vh;
