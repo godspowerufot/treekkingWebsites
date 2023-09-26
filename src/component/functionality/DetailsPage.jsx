@@ -197,7 +197,7 @@ function AboutDetailsPage() {
             usersWithSameLocation.map((userEmail, uniqkey) => (
               <div id="user-item" key={uniqkey}>
             
-                User with Email: <h4>{userEmail}  </h4>is going to the same Location{" "}
+                <h4>{userEmail}  </h4>is going to the same Location{" "}
                 <span onClick={() => sendTrekkingInvitation(user?.email, userEmail)}>
                   {invitationStatus[userEmail] === "success" ? (
                     <CheckCircle style={{ color: "green" }} />
@@ -208,8 +208,24 @@ function AboutDetailsPage() {
               </div>
             ))}
         </div>
-        <div className="wrapper">
-        <div className="AboutLocation">
+      
+      </div>
+      {showModal && (
+        <div className="whatsapp-modal">
+          <div className="modal-content">
+            <h2>Enter Your WhatsApp Number</h2>
+            <input
+              type="text"
+              placeholder="WhatsApp Number"
+              value={whatsappNumber}
+              onChange={(e) => setWhatsAppNumber(e.target.value)}
+            />
+            <button onClick={handleWhatsAppSave}>Save</button>
+          </div>
+
+        </div>
+      )}
+      <div className="wrapper">
       
       <div className="rounded">
         <div className="mapdescription"  >
@@ -257,24 +273,6 @@ function AboutDetailsPage() {
       
       </div>
     </div>
-    </div>
-      </div>
-      {showModal && (
-        <div className="whatsapp-modal">
-          <div className="modal-content">
-            <h2>Enter Your WhatsApp Number</h2>
-            <input
-              type="text"
-              placeholder="WhatsApp Number"
-              value={whatsappNumber}
-              onChange={(e) => setWhatsAppNumber(e.target.value)}
-            />
-            <button onClick={handleWhatsAppSave}>Save</button>
-          </div>
-
-        </div>
-      )}
-    
     </div>
   );
 }

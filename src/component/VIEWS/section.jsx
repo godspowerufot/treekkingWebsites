@@ -118,16 +118,7 @@ function Section() {
                     </div>
                   </div>
             </div>
-                <div className="row">
-                  <div className="col">
-                    <div class="gallery-item">
-                      <figure class="gallery-image">
-                        <img src={images4} alt="San miguel,italy" />
-                      </figure>
-                    </div>
-                  </div>
-                
-                </div>
+           
               </div>
             </div>
           </div>

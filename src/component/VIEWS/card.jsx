@@ -37,13 +37,13 @@ function Card() {
             {" "}
             <LockPersonIcon
               style={{
-                width: "100px",
-                height: "70px",
+                width: "50px",
+                height: "50px",
               }}
             />
           </div>
           <div className="textBox">
-            <h1>{text[0].text}</h1>
+            <h2>{text[0].text}</h2>
             <p> {text[0].link}</p>
           </div>
         </div>
@@ -57,13 +57,13 @@ function Card() {
             {" "}
             <LocationOnTwoTone
               style={{
-                width: "100px",
-                height: "70px",
+                width: "50px",
+                height: "50px",
               }}
             />
           </div>
           <div className="textBox">
-            <h1>{text[1].text}</h1>
+            <h2>{text[1].text}</h2>
             <p> {text[1].link}</p>
           </div>
         </div>
@@ -79,13 +79,13 @@ function Card() {
             {" "}
             < VisibilityIcon
               style={{
-                width: "100px",
-                height: "70px",
+                width: "50px",
+                height: "50px",
               }}
             />
           </div>
           <div className="textBox">
-            <h1>{text[2].text}</h1>
+            <h2>{text[2].text}</h2>
             <p> {text[2].link}</p>
           </div>
         </div>
@@ -105,7 +105,7 @@ function Card() {
             />
           </div>
           <div className="textBox">
-            <h1>{text[3].text}</h1>
+            <h2>{text[3].text}</h2>
             <p> {text[3].link}</p>
           </div>
         </div>

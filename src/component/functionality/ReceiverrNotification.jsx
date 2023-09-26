@@ -70,8 +70,7 @@ function NotificationsComponent() {
 
   // Function to open a WhatsApp chat with the recipient's number
   const openWhatsAppChat = (recipientNumber) => {
-    // Log the recipient's number for testing
-    console.log(recipientNumber);
+    // Log the recipient's number for testingalert("hi") 
     
     // Use the correct URL format to open WhatsApp chat with the recipient's number
     const whatsappURL = `https://wa.me/${recipientNumber}`;
@@ -82,7 +81,10 @@ function NotificationsComponent() {
     try {
       const notificationRef = doc(db, "notifications", notificationId);
       await deleteDoc(notificationRef); // Delete the notification from Firestore
-
+  
+      // Debugging logs
+      console.log('Notification deleted:', notificationId);
+  
       // Update the UI by removing the rejected notification from the state
       setNotifications((prevNotifications) =>
         prevNotifications.filter((notification) => notification.id !== notificationId)
@@ -91,6 +93,7 @@ function NotificationsComponent() {
       console.error("Error rejecting invitation:", error);
     }
   };
+  
 
 
   // Log any errors to the console

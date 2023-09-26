@@ -20,6 +20,8 @@
 
 .filter-users {
   margin-top: 1.5rem;
+
+  padding-bottom: 48px;
 }
 
 #user-item {
@@ -103,4 +105,28 @@ p {
     overflow-x: hidden;
     position: inherit;
 }
+#user-item {
+  display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    padding: -10px;
+    /* position: fixed; */
+    font-family: 'Poppins';
+    border-color: black;
+    font-size: x-small;
+    /* min-width: 228px; */
+    font-weight: 500;
+    width: 282px;
+    margin-left: 63px;
+    height: 55px;
+    /* z-index: 2; */
+    /* width: 200px; */
+    margin-top: 20px;
+}
+
+
   }

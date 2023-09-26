@@ -99,7 +99,6 @@ li a {
     background-color: #112936;
     clip-path: circle(20px at 95% 5%);
     transition: 1s ease-in-out;
-    pointer-events: none;
   }
   .menu-icon {
     display: block;
