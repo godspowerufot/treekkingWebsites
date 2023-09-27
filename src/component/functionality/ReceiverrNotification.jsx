@@ -87,7 +87,7 @@ function NotificationsComponent() {
   
       // Update the UI by removing the rejected notification from the state
       setNotifications((prevNotifications) =>
-        prevNotifications.filter((notification) => notification.id !== notificationId)
+        prevNotifications.filter((notification) => notification.id !==notificationId)
       );
     } catch (error) {
       console.error("Error rejecting invitation:", error);
