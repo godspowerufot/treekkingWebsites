@@ -19,7 +19,7 @@ const Footer = () => {
       <div className="footer-bottom">
         <div className="social-icons">
           <a
-            href="https://web.facebook.com/profile.php?id=100086359764945&_rdc=1&_rdr"
+            href="https://www.facebook.com/godspower.ufot.16"
             className="icons"
           >
             <Facebook />
@@ -35,7 +35,7 @@ const Footer = () => {
             <Mail />
           </a>
         </div>
-        <p>Copyright &copy;{new Date().getFullYear()} <a href="index.html">xplur</a>. All Rights Reserved. Design by <a href="https://emah_wd" target="_blank">Emah WD</a></p>
+        <p>Copyright &copy;{new Date().getFullYear()} <a href="index.html">xplur</a>. All Rights Reserved. Design by <a href="https://github.com/godspowerufot" target="_blank">Godspower Ufot</a></p>
       </div>
     </footer>
   );
