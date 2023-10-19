@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import "./styling/navbar.css";
+import MyButton from "./btn.jsx"
 import { HashLink as Link } from "react-router-hash-link";
 
 import MenuIcon from "@mui/icons-material/Menu";
@@ -33,14 +34,19 @@ function Navbar() {
   };
 
   return (
-    <header>
-      <div className="navbaecontainer">
-        <nav className="navbar">
-          {/* set navelement to false on large(horizontally ) */}
+    <header>   
+      <div className="container">
+        <nav className="navigation">
         
-          <div className="menu-icon" onClick={handleShowNavbar}>
-            {showNavbar ? <CloseIcon /> : <MenuIcon />}
-          </div>
+        <h1  style={{
+              fontWeight: 600,
+              fontSize: '3rem',
+              background: 'linear-gradient(to right, rgb(0, 145, 255), #0e4166)',
+              WebkitBackgroundClip: 'text', /* For webkit browsers like Safari */
+              color: 'transparent',
+              textAlign: 'center', 
+            }}>XPLUR</h1>  
+         
           <ul className={showNavbar ? "open" : ""}>
             {itemList.map((text, index) => (
               <li key={"text" + index} className={text.class}>
@@ -50,7 +56,11 @@ function Navbar() {
               </li>
             ))}
           </ul>
+          <MyButton />
         </nav>
+        <div className="mobile_menu_icon" onClick={handleShowNavbar}>
+            {showNavbar ? <CloseIcon /> : <MenuIcon/>}
+          </div>
       </div>
     </header>
   );

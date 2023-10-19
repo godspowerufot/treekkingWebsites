@@ -53,15 +53,17 @@ function AboutDetailsPage() {
       
      
        link: "/",
-      icon:<Home/>
+      icon:<Home/>,
+      text:"Home"
 
     },
     
     {
         link: "/AboutDetailsPage",
         
-        icon:<Person2Rounded width="36px" height="37px" />
-        
+        icon:<Person2Rounded width="36px" height="37px" />,
+                      text:"send invites"
+
       },
       
       
@@ -248,7 +250,8 @@ function AboutDetailsPage() {
           
           < NotificationsNoneRounded />
       
-      
+          <p >notifications</p>
+
         </div>
         {itemList.map((text, index) => (
           <div className="mapdescription">
@@ -261,13 +264,14 @@ function AboutDetailsPage() {
                   }}>
                 {text.icon}
               </Link>
-           
+              {text.text}
               </div>
           ))}
           <div className="mapdescription"  onClick={handleLogout} >
           <LogoutRounded width="2em" height="2em"  />
 
-      
+          <p >Logout</p>
+
         </div>
       
       

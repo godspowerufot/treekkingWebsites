@@ -122,7 +122,7 @@ function MiniDrawer() {
       <AppBar
         position="fixed"
         open={open}
-        style={{ backgroundColor: " #112936" }}>
+        style={{ backgroundColor: "transparent" }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -134,20 +134,31 @@ function MiniDrawer() {
               ...(open && { display: "none" }),
               marginLeft: -1,
             }}>
-            <MenuIcon />
+            <MenuIcon className="menu"  style={{border: "1px solid rgb(0, 145, 255)", color: "rgb(0, 145, 255)", transition: "background-color 0.3s", width: "4rem", height: "4rem", borderRadius: "3px", padding: "5px"}}/>
           </IconButton>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ fontSize: "10px" }}>
-            TREKKERS
+            sx={{ fontSize: "10px" }}
+            style={{
+              fontWeight: 600,
+              fontSize: '3rem',
+              background: 'linear-gradient(to right, rgb(0, 145, 255), #0e4166)',
+              WebkitBackgroundClip: 'text', /* For webkit browsers like Safari */
+              color: 'transparent',
+              textAlign: 'center', // Optional: Center the text horizontally
+              padding: '10px', // Optional: Add padding for better visibility
+            }}>
+           XPLUR
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open} sx={{ maxwidth: "5px" }}>
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClose}
+        
+          >
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
             ) : (

@@ -1,21 +1,161 @@
 .about-page {
-  padding: 40px;
+  padding: 4rem 10rem;
 }
 
 .about-content {
-  max-width: 800px;
   margin: 0 auto;
   font-size: 18px;
   color: black;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-h1 {
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 20px;
+.about-content h1{
+  margin-bottom: 3rem;
+  color: var(--main-c);
+  font-weight: 500;
+  font-size: 30px;
 }
 
-p {
-  margin-bottom: 20px;
+.about-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75vw;
+  margin-top: 5rem;
+}
+
+
+.a-left img{
+  width: 35vw;
+  height: 55vh;
+  border-radius: 1.2rem;
+  object-fit: cover;
+}
+.a-right{
+  background: rgba(157,155,176,0.5);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(157,155,176,0.25);
+  border-radius: 1rem;
+  height: 50vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+ padding: 6rem;
+}
+
+.a-right h3{
+  color: var(--main-c);
+  text-align: flex-start;
+
+}
+
+.a-right p{
+  font-size: 13px;
+  font-weight: 520;
+  color: var(--sub-c);
+  max-width: 29vw;
+}
+
+.num{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10%;
+}
+
+.about-heading, .num p{
+  margin: 0 !important;
+}
+
+.num div > span{
+  font-weight: 800 !important;
+  color: azure;
+}
+
+.num div > p{
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 400;
+}
+
+/* =====media query =====*/
+@media(max-width: 748px){
+.a-left{
+  display: none;
+}
+
+.a-right{
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-container{
+  justify-content: center;
+}
+
+.a-right p{
+  max-width: 90%;
+}
+
+.num{
+  gap: 0;
+}
+
+.num > div{
+margin: 6%;
+margin-left: -2%;
+}
+}
+
+
+@media(max-width: 784px){
+.a-right{
+  padding: 3rem;
+  text-align: center;
+}
+
+  .about-container{
+    margin-top: 1rem;
+  }
+
+}
+
+
+@media(max-width: 397px){
+  .a-right{
+    width: 100%;
+  }
+
+  .a-right p{
+    max-width: 98%;
+  }
+
+  .a-right h3{
+   font-size: 15px;
+  }
+
+
+  .a-right p{
+    font-size: 10px;
+   }
+
+  .num > div p{
+    font-size: 9px;
+  }
+
+  .num > div span{
+    font-size: 10.2px;
+  }
+
+  .about-container{
+    margin-top: 0;
+  }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import "./styling/footer.css";
 import { Facebook } from "@mui/icons-material";
@@ -8,10 +9,10 @@ import { Mail } from "@mui/icons-material";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <span className="logo-text">Trekk</span>
+          <span className="logo-text">XPLUR</span>
         </div>
      
       </div>
@@ -34,7 +35,7 @@ const Footer = () => {
             <Mail />
           </a>
         </div>
-        <p>&copy; 2023 Trekkers. All rights reserved.</p>
+        <p>Copyright &copy;{new Date().getFullYear()} <a href="index.html">xplur</a>. All Rights Reserved. Design by <a href="https://emah_wd" target="_blank">Emah WD</a></p>
       </div>
     </footer>
   );

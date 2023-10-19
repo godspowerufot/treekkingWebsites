@@ -1,130 +1,176 @@
 :root {
-  --cadet-blue-crayola: hsl(240, 10%, 70%);
-  --gold-web-golden: #152238;
-  --vivid-sky-blue: hsl(196, 84%, 63%);
-  --midnight-blue: hsl(231, 83%, 25%);
-  --minion-yellow: hsl(50, 100%, 64%);
-  --independence: hsl(225, 24%, 27%);
-  --orange-soda: hsl(7, 96%, 61%);
-  --space-cadet: hsl(243, 23%, 18%);
-  --fiery-rose: hsl(353, 83%, 65%);
-  --klein-blue: hsl(230, 80%, 39%);
-  --bluetiful: hsl(222, 88%, 55%);
-  --glaucous: hsl(230, 52%, 63%);
-  --manatee: hsl(254, 7%, 65%);
-  --rufous: hsl(2, 85%, 35%);
-  --black: hsl(0, 0%, 0%);
-  --white: hsl(0, 0%, 100%);
-  --ff-open-sans: "Open Sans", sans-serif;
-  --ff-barlow: "Barlow", sans-serif;
-  --ff-poppins: "Poppins", sans-serif;
-  --fs-1: 3.5rem;
-  --fs-2: 3rem;
-  --fs-3: 2.4rem;
-  --fs-4: 2rem;
-  --fs-5: 1.8rem;
-  --fs-6: 1.3rem;
-  --fw-600: 600;
-  --fw-700: 700;
-  --radius-5: 5px;
-  --radius-10: 10px;
-  --radius-15: 15px;
-  --radius-20: 20px;
-  --section-padding: 60px;
-  --shadow: 0 -5px 10px var(--manatee);
-  --transition-1: 0.05s ease;
-  --transition-2: 0.25s ease;
-  --cubic-out: cubic-bezier(0.33, 0.85, 0.56, 1.02);
-}
+    --cadet-blue-crayola: hsl(240, 10%, 70%);
+    --gold-web-golden: #152238;
+    --vivid-sky-blue: hsl(196, 84%, 63%);
+    --midnight-blue: hsl(231, 83%, 25%);
+    --minion-yellow: hsl(50, 100%, 64%);
+    --independence: hsl(225, 24%, 27%);
+    --orange-soda: hsl(7, 96%, 61%);
+    --space-cadet: hsl(243, 23%, 18%);
+    --fiery-rose: hsl(353, 83%, 65%);
+    --klein-blue: hsl(230, 80%, 39%);
+    --bluetiful: hsl(222, 88%, 55%);
+    --glaucous: hsl(230, 52%, 63%);
+    --manatee: hsl(254, 7%, 65%);
+    --rufous: hsl(2, 85%, 35%);
+    --black: hsl(0, 0%, 0%);
+    --white: hsl(0, 0%, 100%);
+    --ff-open-sans: "Open Sans", sans-serif;
+    --ff-barlow: "Barlow", sans-serif;
+    --ff-poppins: "Poppins", sans-serif;
+    --fs-1: 3.5rem;
+    --fs-2: 3rem;
+    --fs-3: 2.4rem;
+    --fs-4: 2rem;
+    --fs-5: 1.8rem;
+    --fs-6: 1.3rem;
+    --fw-600: 600;
+    --fw-700: 700;
+    --radius-5: 5px;
+    --radius-10: 10px;
+    --radius-15: 15px;
+    --radius-20: 20px;
+    --section-padding: 60px;
+    --shadow: 0 -5px 10px var(--manatee);
+    --transition-1: 0.05s ease;
+    --transition-2: 0.25s ease;
+    --cubic-out: cubic-bezier(0.33, 0.85, 0.56, 1.02);
+  }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-header {
-  position: fixed;
-  /* padding-block: 15px; */
-  width: 100%;
-
-  transition: 0.25s var(--cubic-out);
-  z-index: 4;
-}
-header .navbaecontainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
- 
-}
-nav {
-  background-color: #112936;
-  height: 7vh;
- 
-  width: 100%;
-  color: white;
-  z-index: 2;
-  position: relative;
-}
-
-ul {
-  display: flex;
-  flex-direction: row;
- margin-top: 10px;
-  justify-content: center;
-
-}
-
-li {
-  list-style: none;
-  padding-inline: 59px;
-}
-
-li a {
-  text-decoration: none;
-  font-family: poppins, sans-serif;
-  color: white;
-}
-.menu-icon {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  ul {
-    position: absolute;
-    flex-direction: column;
-    height: 100vh;
+  header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  header {
+    position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
     width: 100%;
-    text-align: center;
-    background-color: #112936;
-    clip-path: circle(20px at 95% 5%);
-    transition: 1s ease-in-out;
+    transition: 0.25s var(--cubic-out);
+    z-index: 4;
+    box-shadow: 1px 0.5rem 2rem 5px rgb(0 0 0 / 53%);;
   }
-  .menu-icon {
-    display: block;
-    color: white;
+  header .navbaecontainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
   }
-
   nav {
-    background-color: #112936;
-    height: 34px;
+    background-color: transparent;
+    height: 8vh;
+    display: flex;
+    align-items: center;
     width: 100%;
-  }
-
-  .line {
+    color: white;
+    z-index: 2;
     position: relative;
-    background-color: white;
-    height: 3px;
-    width: 30px;
-    margin: 5px;
+    justify-content: space-between;
+    padding: 0 5%;
   }
 
-  ul.open {
-    background-color: #112936;
-    color: aliceblue;
-    clip-path: circle(1000px at 95% 5%);
-    -webkit-clip-path: circle(1000px at 95% 5%);
-    pointer-events: all;
-    justify-content: space-evenly;
+
+  
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   align-items: center;
   }
-}
+  
+  li {
+    list-style: none;
+    margin-right: 15% !important;
+  }
+  
+  li a {
+    text-decoration: none;
+    font-family: poppins, sans-serif;
+    color: white;
+    font-size: 14px;
+    font-weight: 550;
+    
+  }
+
+  li a:hover{
+    color:white;
+    animation-name:glow;
+    animation-duration:1s;
+    animation-iteration-count:infinite;
+    animation-direction:alternate;
+  }
+  .mobile_menu_icon{
+    display: none;
+   margin-right: 1rem;
+   width: 50;
+   height: 50;
+       border: 1px solid var(--btn);
+    padding: 0.5rem;
+    border-radius: 1px;
+  }
+  
+  .mobile_menu_icon:hover{
+background-color: var(--btn);
+  }
+  @media (max-width: 768px) {
+    ul {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: -1rem;
+      bottom: 0;
+      flex-direction: column;
+      height: 100vh;
+      width: 100%;
+      text-align: center;
+      background-color: transparent;
+      clip-path: circle(20px at 95% 5%);
+      transition: 1s ease-in-out;
+    }
+    .mobile_menu_icon {
+      display: block;
+      color: white;
+      cursor: pointer;
+    }
+
+    .mobile_menu_icon:hover{
+      color:white;
+      animation-name:glow;
+      animation-duration:1s;
+      animation-iteration-count:infinite;
+      animation-direction:alternate;
+    }
+  
+    nav {
+      background-color: transparent;
+      height: 34px;
+      width: 100%;
+    }
+  
+    .line {
+      position: relative;
+      background-color: white;
+      height: 3px;
+      width: 30px;
+      margin: 5px;
+    }
+  
+    ul.open {
+      background-color: var(--btn);
+      color: aliceblue;
+      clip-path: circle(1000px at 95% 5%);
+      -webkit-clip-path: circle(1000px at 95% 5%);
+      pointer-events: all;
+      justify-content: space-evenly;
+    }
+
+  }

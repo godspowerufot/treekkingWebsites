@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+// eslint-disable-next-line no-unused-vars
 import { LocationOnTwoTone } from "@mui/icons-material";
 import "./styling/section.css";
 import LockPersonIcon from '@mui/icons-material/LockPerson';
@@ -26,14 +27,9 @@ function Card() {
 
   return (
     <>
-    
-      <div className="row">
-        <div className="co" style={{flexDirection:"column"}}>
-        <div
-          className="card"
-  
-        >
-          <div className="icon">
+<div className="cardRow">
+<div className="cardContain">
+    <div className="icon">
             {" "}
             <LockPersonIcon
               style={{
@@ -42,18 +38,14 @@ function Card() {
               }}
             />
           </div>
-          <div className="textBox">
+<div className="textBox">
             <h2>{text[0].text}</h2>
             <p> {text[0].link}</p>
           </div>
-        </div>
-        </div>
-        <div className="co" style={{flexDirection:"column"}}>
-        <div
-          className="card"
-  
-        >
-          <div className="icon">
+    </div>
+
+    <div className="cardContain">
+    <div className="icon">
             {" "}
             <LocationOnTwoTone
               style={{
@@ -62,57 +54,48 @@ function Card() {
               }}
             />
           </div>
-          <div className="textBox">
+<div className="textBox">
             <h2>{text[1].text}</h2>
             <p> {text[1].link}</p>
           </div>
-        </div>
-        </div>
-        </div>
-      <div className="row">
-            <div className="co" style={{flexDirection:"column"}}>
-        <div
-          className="card"
-  
-        >
-          <div className="icon">
+    </div>
+
+    <div className="cardContain">
+    <div className="icon">
             {" "}
-            < VisibilityIcon
+            <VisibilityIcon
               style={{
                 width: "50px",
                 height: "50px",
               }}
             />
           </div>
-          <div className="textBox">
+<div className="textBox">
             <h2>{text[2].text}</h2>
             <p> {text[2].link}</p>
           </div>
-        </div>
-        </div>
-            <div className="co" style={{flexDirection:"column"}}>
-        <div
-          className="card"
-  
-        >
-          <div className="icon">
+    </div>
+
+    <div className="cardContain">
+    <div className="icon">
             {" "}
             <FileUploadIcon
               style={{
-                width: "100px",
-                height: "70px",
+                width: "50px",
+                height: "50px",
               }}
             />
           </div>
-          <div className="textBox">
+<div className="textBox">
             <h2>{text[3].text}</h2>
             <p> {text[3].link}</p>
           </div>
-        </div>
-        </div>
-        </div>
+    </div>
+
     
-    
+</div>
+
+
     </>
   );
 }

@@ -71,29 +71,11 @@
   --error-color: #f57e7c;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+
 
 body {
   font-family: "Roboto", sans-serif;
-}
-
-h1 {
-  margin: 0 0 50px;
-  font-family: "Montserrat", sans-serif;
-  color: #213251;
-  text-align: center;
-}
-
-p {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  line-height: 1.6;
-  font-size: 17px;
-  letter-spacing: 0.16px;
+  margin: 0%;
 }
 
 @media  (max-width: 768px) {

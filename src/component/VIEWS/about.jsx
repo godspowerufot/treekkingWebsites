@@ -1,35 +1,51 @@
 import React from "react";
 import "./styling/about.css";
+import img2 from "./images/img2.jpg"
 const AboutPage = () => {
   return (
     <div className="about-page" id="About">
       <div className="about-content">
-        <h1>About Our Trekking App</h1>
-        <p>
+        <h1>About</h1>
+
+        <div className="about-container">
+          <div className="a-left"  data-aos="fade-right" >
+            <img src={img2} alt="" />
+          </div>
+      <div className="a-right"  data-aos="fade-left" >
+        <h3 className="about-heading">
+          Get to know us
+        </h3>
+      <p>
           At TrekkingAdventures, we are passionate about connecting adventurers
           with the wonders of nature. Our app is designed to cater to both
           seasoned trekkers and beginners, offering a wide range of trekking
           experiences in mesmerizing landscapes around the world.
         </p>
-        <p>
-          Whether you're looking for a thrilling high-altitude expedition or a
-          peaceful hike through lush forests, our app has something for
-          everyone. We believe that trekking is not just about reaching the
-          destination but embracing the journey, cherishing moments of
-          camaraderie, and appreciating the beauty of our planet.
-        </p>
-        <p>
-          With safety as our utmost priority, we ensure that all treks listed on
-          our app are conducted by experienced guides who are well-versed with
-          the terrains and equipped to handle emergencies. Additionally, we
-          provide weather updates and safety tips to keep trekkers informed and
-          prepared.
-        </p>
-        <p>
-          Join our ever-growing community of adventure enthusiasts and embark on
-          memorable treks that will leave you with stories to tell for a
-          lifetime. Happy trekking!
-        </p>
+<div className="num">
+  <div className="tours">
+    <span >500</span>
+    <p>Tours</p>
+  </div>
+
+  <div className="years">
+    <span>10</span>
+    <p>Years</p>
+  </div>
+
+  <div className="Members">
+    <span>1500</span>
+    <p>Members</p>
+  </div>
+
+    <div className="Reviews">
+    <span>10</span>
+    <p>Reviews</p>
+  </div>
+</div>
+
+      </div>
+
+        </div>
       </div>
     </div>
   );

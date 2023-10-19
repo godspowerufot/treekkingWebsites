@@ -3,7 +3,7 @@ import React from "react";
 import "./card.css";
 import { LocationOnTwoTone } from "@mui/icons-material";
 import { UserAuth } from "../contextapi";
-import { AccountCircle } from "@mui/icons-material";
+// import { AccountCircle } from "@mui/icons-material";
 import locations from "./fetch";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
@@ -31,13 +31,14 @@ function SelectLocation() {
 
   return (
     <>
+
       <div className="body">
         <div className="cardSection">
           {locations.map((text, index) => (
             <div className="card" key={index}>
               <iframe
                 src={text.embedLink}
-                width="297px"
+                width="90%"
                 height="200px"
                 style={{ border: "0" }}
                 title="name"
@@ -45,9 +46,7 @@ function SelectLocation() {
 
               <div className="card__content">
                 <h1 className="card__header">{text.header}</h1>
-                <p className="card__text">
-                 Get to that location at a slow pace , with smiles and laughter. Dont u ever get worry about pains that is what your leg was meant for  (to walk)
-                </p>
+            
                 <div className="card__btn">
                   <Link
                     key={locations.name}

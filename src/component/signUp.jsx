@@ -71,7 +71,8 @@ export default function SignUp() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+  <div className="signup" style={{backgroundColor: "#fff", width: "100vw", height: "100vh", overflow: "hidden"}}>
+      <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -160,5 +161,6 @@ export default function SignUp() {
         </Box>
       </Container>
     </ThemeProvider>
+  </div>
   );
 }

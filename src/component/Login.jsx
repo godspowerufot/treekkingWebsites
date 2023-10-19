@@ -67,14 +67,15 @@ export default function Login() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+<div className="login">
+<ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
             display: "flex",
-
+            
             flexDirection: "column",
             alignItems: "center",
           }}
@@ -120,6 +121,7 @@ export default function Login() {
               value={form.password}
               id="password"
               autoComplete="current-password"
+             
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -155,5 +157,6 @@ export default function Login() {
         </Box>
       </Container>
     </ThemeProvider>
+</div>
   );
 }
