@@ -3,6 +3,7 @@ import "./styling/header.css";
 import Navbar from "./Navbar";
 import Section from "./section.jsx";
 import { Link } from "react-router-dom";
+import bg from "./images/bg.mp4"
 
 function New() {
   useEffect(() => {
@@ -27,9 +28,16 @@ function New() {
 
   return (
     <>
-      <div className="landing" id="home">
-        <Navbar />
-        <div className="headerb">
+ <Navbar />
+
+ <div className="video-background">
+      <video autoPlay loop muted>
+        <source src={bg} type="video/mp4" />
+      </video>
+    </div>
+<div className="landing" id="home">
+ 
+      <div className="headerb">
         <div class="content-text container-text">
         <div class="head-text glow swift-up-text">EXPLORE</div>
         <div class="sub-text swift-up-text">
@@ -50,8 +58,9 @@ function New() {
             </Link>
           </div>
         </div>
-      </div>
-      <Section />
+    </div>
+<Section />
+
     </>
   );
 }

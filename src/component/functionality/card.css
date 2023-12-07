@@ -269,6 +269,14 @@ margin-bottom: 0rem bottom;
 /* align-items: center;*/
 
 @media (max-width: 60em) {
+  .body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 1rem;
+    margin-left: 42px;
+    font-family: "Inter", sans-serif;
+}
   .grid {
     grid-gap: 3rem;
     margin-top: 2em;

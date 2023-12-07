@@ -50,14 +50,14 @@
   }
   
   header {
-    position: fixed;
+    position: absolute;
    top: 0;
    left: 0;
    right: 0;
     width: 100%;
     transition: 0.25s var(--cubic-out);
     z-index: 4;
-    box-shadow: 1px 0.5rem 2rem 5px rgb(0 0 0 / 53%);;
+/*     box-shadow: 1px 0.5rem 2rem 5px rgb(0 0 0 / 53%);; */
   }
   header .navbaecontainer {
     display: flex;
@@ -165,11 +165,12 @@ background-color: var(--btn);
     }
   
     ul.open {
-      background-color: var(--btn);
+      background-color:  #052044;
       color: aliceblue;
       clip-path: circle(1000px at 95% 5%);
       -webkit-clip-path: circle(1000px at 95% 5%);
       pointer-events: all;
+      width:100vw;
       justify-content: space-evenly;
     }
 

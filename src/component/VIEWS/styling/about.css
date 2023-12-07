@@ -57,7 +57,7 @@
 }
 
 .a-right p{
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 520;
   color: var(--sub-c);
   max-width: 29vw;
@@ -124,6 +124,7 @@ margin-left: -2%;
 
   .about-container{
     margin-top: 1rem;
+    width: 95vw;
   }
 
 }
@@ -138,14 +139,14 @@ margin-left: -2%;
     max-width: 98%;
   }
 
-  .a-right h3{
+  /* .a-right h3{
    font-size: 15px;
   }
 
 
   .a-right p{
     font-size: 10px;
-   }
+   } */
 
   .num > div p{
     font-size: 9px;

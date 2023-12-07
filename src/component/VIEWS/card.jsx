@@ -9,19 +9,19 @@ function Card() {
   const text = [
     {
       text: "Authentication",
-      link: "  Create an account and log in to start your trekking journey.",
+      link: "  Create an account and log in to start your xplur journey.",
     },
     {
       text: "Mark Location",
-      link: "Select your preferred trek, choose trekking dates, and make a reservations",
+      link: "Select your preferred location, choose dates, and make a reservations",
     },
     {
       text: "Show Invites",
-      link: " Connect with like-minded trekkers and form a  trek together.",
+      link: " Connect with like-minded people and form a  trek together.",
     },
     {
       text: "Send invites ",
-      link: "Send invites to people and conect together and feel safe when trekking",
+      link: "Send invites to people and conect together and feel safe when Exploring",
     },
   ];
 

@@ -16,7 +16,7 @@ const AboutPage = () => {
           Get to know us
         </h3>
       <p>
-          At TrekkingAdventures, we are passionate about connecting adventurers
+          At xplur, we are passionate about connecting adventurers
           with the wonders of nature. Our app is designed to cater to both
           seasoned trekkers and beginners, offering a wide range of trekking
           experiences in mesmerizing landscapes around the world.
